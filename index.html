@@ -178,6 +178,18 @@ body.rtOn #app{padding-bottom:96px}
 .rtbub[hidden]{display:none}
 @keyframes rtup{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}@keyframes rtpop{0%{opacity:0;transform:scale(.7)}60%{transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}.rtp{animation:rtup .28s cubic-bezier(.2,.9,.3,1.1)}.rtbub{animation:rtpop .32s ease-out}.rtm{animation:rtpop .25s ease-out}.rts:active span{animation:rtpop .3s}.rtb:active{transform:scale(.92)}
 @media (prefers-reduced-motion:reduce){.rtp,.rtbub,.rtm{animation:none}.rtb.live{animation:none}}
+.whov{display:flex;flex-direction:column;gap:8px}.vw{display:flex;align-items:center;gap:8px;background:var(--surface);border-radius:14px;padding:6px 10px;animation:rtpop .3s ease-out both}
+.vw .av,.vw>*:first-child{flex:none}.vn{font-weight:800;font-size:15px;flex:none;max-width:34%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.va{color:var(--muted);font-weight:900}
+.vt{border-radius:10px;padding:3px 12px;font-weight:900;font-size:15px;max-width:44%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.vx{color:var(--muted);font-size:14px}
+.tipw{position:fixed;inset:0;z-index:30;background:rgba(18,18,19,.6);display:flex;align-items:flex-end;justify-content:center;padding:16px;animation:tipfade .25s ease-out;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px)}
+.tipw.out{opacity:0;transition:opacity .2s}
+.tipc{width:100%;max-width:520px;background:var(--surface);color:var(--fg);border-radius:28px;padding:24px 22px 20px;display:flex;flex-direction:column;gap:12px;animation:tipup .35s cubic-bezier(.2,.9,.3,1.05);margin-bottom:env(safe-area-inset-bottom,0px)}
+.tipc small{color:var(--muted);font-weight:800}.tipc h2{margin:0;font-size:28px;font-weight:900}
+.tipc ol{margin:0;padding:0 22px 0 0;display:flex;flex-direction:column;gap:8px;font-size:17px;font-weight:700;line-height:1.6}
+.tipc li::marker{color:var(--focus);font-weight:900}
+.tipbar{height:4px;border-radius:2px;background:var(--track);overflow:hidden}.tipbar i{display:block;height:100%;background:var(--orange);transform-origin:right;animation:tipshrink linear forwards}
+@keyframes tipfade{from{opacity:0}to{opacity:1}}@keyframes tipup{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}@keyframes tipshrink{from{transform:scaleX(1)}to{transform:scaleX(0)}}
+@media (prefers-reduced-motion:reduce){.tipw,.tipc,.vw{animation:none}.tipbar i{animation:none}}
 </style>
 <meta property="og:title" content="لمّة | لعبة القعدة"><meta property="og:description" content="العب مع صحابك أونلاين: أسئلة، جاسوس، مايك وستيكرات بصوت وشات. ادخل بالكود!"><meta property="og:image" content="https://hayo-eg.github.io/lamma/card.png"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image"></head>
 <body>
@@ -435,7 +447,7 @@ function vHome() {
     '<div class="game"><div class="num" style="background:#6C9BD1;color:#121213">٢</div><div class="t"><b>الجاسوس</b><span>٦ دقايق · ٣ لـ ٨ لاعبين · موبايل واحد</span></div><span class="tag">جاهزة</span></div>' +
     '<div class="game"><div class="num" style="background:#2F5F9A;color:#fff">٣</div><div class="t"><b>ثقافة عامة</b><span>٥ دقايق · لاعب لـ ٨ · موبايل واحد</span></div><span class="tag">جديدة</span></div>' +
     '<div class="game"><div class="num" style="background:#D3E2F3">٤</div><div class="t"><b>كمّل المثل</b><span>٤ دقايق · لاعب لـ ٨ · موبايل واحد</span></div><span class="tag">جديدة</span></div></div>' +
-    '<p class="note">نسخة ١٢</p>';
+    '<p class="note">نسخة ١٣</p>';
 }
 function vJoin() {
   return bar('goHome', '') +
@@ -504,13 +516,21 @@ function vResult(ps) {
     rows += '<div class="br"><span class="n">' + esc(p.name) + '</span><div class="tr"><div class="f" style="width:' + w + '%;background:' + colorOf(ps, p.id).bg + '"></div></div><span class="c">' + ar(t[p.id]) + '</span></div>';
   });
   const last = r.q + 1 >= qs.length;
+  if (S.resKey !== key) { S.resKey = key; S.resAt = Date.now(); }
+  const HOLD = 4000, wait = Math.max(0, HOLD - (Date.now() - S.resAt));
+  if (wait > 0 && !S.resT) S.resT = setTimeout(() => { S.resT = 0; if (S.screen === 'room') render(); }, wait + 30);
+  let who = '';
+  ps.forEach((p, i) => {
+    const v = VOTES()[p.id] && VOTES()[p.id][key], tp = v && ps.find((x) => x.id === v);
+    who += '<div class="vw" style="animation-delay:' + (i * 90) + 'ms">' + avatar(ps, p) + '<span class="vn">' + esc(p.name) + '</span><span class="va">' + (tp ? '←' : '') + '</span>' + (tp ? '<span class="vt" style="background:' + colorOf(ps, tp.id).bg + ';color:' + colorOf(ps, tp.id).fg + '">' + esc(tp.name) + '</span>' : '<span class="vx">ما صوّتش</span>') + '</div>';
+  });
   const action = isHost()
-    ? '<button type="button" class="btn primary" data-act="next"><span>' + (last ? 'النتيجة النهائية' : 'السؤال اللي بعده') + '</span>' + ICON.next + '</button>'
+    ? '<button type="button" class="btn primary" data-act="next"' + (wait > 0 ? ' disabled' : '') + '><span>' + (last ? 'النتيجة النهائية' : 'السؤال اللي بعده') + '</span>' + ICON.next + '</button>'
     : '<div class="status wait">استنى صاحب القعدة يكمّل</div>';
   return '<div class="meta"><span>نتيجة سؤال ' + ar(r.q + 1) + ' من ' + ar(qs.length) + '</span></div>' +
     '<div class="win"><div class="q">الأكتر احتمالاً ' + esc(QUESTIONS[qs[r.q]]) + '</div><div class="name' + (long ? ' long' : '') + '">' + title + '</div>' +
     (sub ? '<div class="badge">' + ICON.cup + '<span>' + sub + '</span></div>' : '') + '</div>' +
-    '<div class="bars"><div class="label">الأصوات</div>' + rows + '</div><div class="spacer"></div>' + action;
+    '<div class="bars"><div class="label">الأصوات</div>' + rows + '</div><div class="whov"><div class="label">مين صوّت لمين</div>' + who + '</div><div class="spacer"></div>' + action;
 }
 
 function vEnd(ps) {
@@ -591,6 +611,7 @@ function render() {
     if (app.querySelector('[data-confetti]')) confetti();
   }
   rtSync();
+  if (S.screen === 'room' && S.room && S.room.phase === 'vote' && S.room.q === 0 && !TIP.seen['on' + S.code + ':' + S.room.g]) { TIP.seen['on' + S.code + ':' + S.room.g] = 1; showTip('online', null, 6000); }
 }
 
 function toast(msg) {
@@ -707,7 +728,7 @@ function startGame() {
   if (!isHost() || PL().length < 2) return;
   const idx = shuffleIdx();
   S.advKey = '';
-  update(ref(db, 'rooms/' + S.code), { phase: 'vote', q: 0, qs: idx.slice(0, NQ), qEnd: now() + DUR }).catch(fail);
+  update(ref(db, 'rooms/' + S.code), { phase: 'vote', q: 0, qs: idx.slice(0, NQ), qEnd: now() + DUR + 6000 }).catch(fail);
 }
 function nextQ() {
   const r = S.room; if (!isHost() || !r) return;
@@ -843,6 +864,7 @@ function vOffEnd() {
     '<button type="button" class="btn ghost" data-act="goHome">خروج</button>';
 }
 function offStart() {
+  if (!TIP.seen[O.game]) { showTip(O.game, offStart); return; }
   if (O.game === 'spy') { spyStart(); return; }
   if (O.game === 'trivia' || O.game === 'proverb') { quizStart(); return; }
   if (O.names.length < 2) return;
@@ -1191,6 +1213,30 @@ setInterval(() => {
   hostTick();
 }, 250);
 
+/* ---------- شاشة نصيحة قبل اللعب ---------- */
+const TIP = { seen: {}, el: null, t: 0, cb: null };
+const TIPS = {
+  online: ['مين الأكتر احتمالاً', ['السؤال بيظهر. اختار الصاحب اللي ينطبق عليه.', 'معاك ٢٠ ثانية، وصوتك مخفي لحد ما السؤال يخلص.', 'بعدها بنشوف مين صوّت لمين ونضحك.', 'المايك والستيكرات والشات تحت.']],
+  likely: ['مين الأكتر احتمالاً', ['مرّروا الموبايل واحد واحد.', 'كل واحد يختار الصاحب اللي ينطبق عليه السؤال، من غير ما حد يشوف.', 'في الآخر نشوف مين ملك القعدة.']],
+  spy: ['الجاسوس', ['كل واحد يشوف المكان لوحده، إلا الجاسوس.', 'اسألوا بعض أسئلة عن المكان من غير ما تقولوه.', 'اللي إجابته غريبة غالباً هو الجاسوس. الجاسوس يحاول يخمّن المكان.']],
+  trivia: ['ثقافة عامة', ['سؤال لكل واحد بالدور.', 'اختار الإجابة الصح وخد نقطة.', 'اللي معاه نقط أكتر يكسب.']],
+  proverb: ['كمّل المثل', ['هيظهر أول المثل بالدور.', 'اختار الباقي الصح وخد نقطة.', 'اللي معاه نقط أكتر يكسب.']]
+};
+function showTip(kind, cb, auto) {
+  TIP.seen[kind] = 1; const d = TIPS[kind]; if (!d) { if (cb) cb(); return; }
+  hideTip(true);
+  const el = document.createElement('div'); el.className = 'tipw'; el.setAttribute('role', 'dialog'); el.setAttribute('aria-label', 'إزاي تلعب');
+  el.innerHTML = '<div class="tipc"><small>إزاي تلعب</small><h2>' + esc(d[0]) + '</h2><ol>' + d[1].map((x) => '<li>' + esc(x) + '</li>').join('') + '</ol><button type="button" class="btn primary" data-tip="go">يلا نلعب</button>' + (auto ? '<div class="tipbar"><i style="animation-duration:' + auto + 'ms"></i></div>' : '') + '</div>';
+  document.body.appendChild(el); TIP.el = el; TIP.cb = cb || null;
+  if (auto) TIP.t = setTimeout(() => hideTip(false), auto);
+  setTimeout(() => { const b = el.querySelector('button'); if (b) b.focus(); }, 50);
+}
+function hideTip(silent) {
+  clearTimeout(TIP.t); const el = TIP.el, cb = TIP.cb; TIP.el = null; TIP.cb = null;
+  if (el) { el.classList.add('out'); setTimeout(() => { if (el.parentNode) el.parentNode.removeChild(el); }, 220); }
+  if (!silent && cb) cb();
+}
+document.addEventListener('click', (e) => { if (e.target.closest && e.target.closest('[data-tip]')) hideTip(false); });
 /* ---------- صوت وشات وستيكرات القعدة (PeerJS، من موبايل لموبايل) ---------- */
 const RT = { peer: null, code: '', conns: {}, calls: {}, mic: null, muted: false, panel: '', chat: [], unread: 0, ac: null, starting: false, loading: null, timer: 0, audios: {} };
 const STK = [['laugh', '😂', 'ضحكة'], ['no', '❌', 'لا!'], ['yes', '✅', 'أيوه'], ['clap', '👏', 'تصفيق'], ['wow', '😱', 'يا نهار'], ['drum', '🥁', 'طبلة'], ['fan', '🎺', 'تاتا'], ['bore', '😴', 'ملل']];
