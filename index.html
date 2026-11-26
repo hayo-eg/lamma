@@ -154,6 +154,30 @@ body{-webkit-font-smoothing:antialiased}
 @media (prefers-reduced-motion: reduce){.app.enter>*,.app.enter .games>.game,.logo .mark,.btn.primary,.vote.sel,.opt.right,.opt.wrong{animation:none!important}.conf{display:none}}
 @keyframes pop{from{transform:scale(.96);opacity:.6}to{transform:scale(1);opacity:1}}
 @media (prefers-reduced-motion: reduce){.win{animation:none}}
+body.rtOn #app{padding-bottom:96px}
+#rt{position:fixed;left:0;right:0;bottom:0;z-index:15;max-width:560px;margin:0 auto;padding:0 12px calc(10px + env(safe-area-inset-bottom,0px));pointer-events:none}
+#rt[hidden]{display:none}
+#rt>*{pointer-events:auto}
+.rtbar{display:flex;align-items:center;gap:8px;background:var(--panel);color:var(--panel-fg);border-radius:20px;padding:8px 10px;box-shadow:0 4px 18px rgba(0,0,0,.25)}
+.rtb{position:relative;min-width:58px;height:54px;border-radius:14px;border:0;background:transparent;color:inherit;font-family:inherit;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;cursor:pointer}
+.rtb span{font-size:22px;line-height:1.1}.rtb small{font-size:11px;font-weight:700;opacity:.85}
+.rtb.on{background:rgba(255,255,255,.14)}.rtb.live{background:var(--orange);color:var(--ink);animation:pulse 1.6s infinite}.rtb.muted{background:var(--err);color:#fff}
+.rtn{position:absolute;top:2px;inset-inline-end:6px;background:var(--orange);color:var(--ink);border-radius:10px;font-style:normal;font-size:11px;font-weight:900;min-width:18px;height:18px;line-height:18px;text-align:center}
+.rtst{flex:1;text-align:center;font-size:12px;font-weight:700;opacity:.8}
+.rtp{background:var(--surface);color:var(--fg);border:2px solid var(--track);border-radius:20px;padding:10px;margin-bottom:8px;box-shadow:0 4px 18px rgba(0,0,0,.18)}
+.rtg{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.rts{height:68px;border-radius:14px;border:2px solid var(--track);background:var(--bg);color:var(--fg);font-family:inherit;display:flex;flex-direction:column;align-items:center;justify-content:center;cursor:pointer}
+.rts:active{transform:scale(.94);background:var(--yellow);color:var(--ink)}.rts span{font-size:26px;line-height:1.1}.rts small{font-size:12px;font-weight:800}
+.rtc{max-height:34vh;overflow-y:auto;display:flex;flex-direction:column;gap:6px;padding:2px 2px 8px}
+.rtm{align-self:flex-start;background:var(--bg);border-radius:14px;padding:6px 12px;max-width:85%;font-size:15px;line-height:1.5;word-break:break-word}
+.rtm.me{align-self:flex-end;background:var(--orange);color:var(--ink)}
+.rtm b{display:block;font-size:11px;opacity:.7}.rte{text-align:center;color:var(--muted);font-size:14px;margin:8px 0}
+.rtf{display:flex;gap:8px}.rtf input{flex:1;min-width:0;height:48px;border-radius:14px;border:2px solid var(--track);background:var(--bg);color:var(--fg);font-family:inherit;font-size:16px;padding:0 12px}
+.rtsend{width:52px;height:48px;border-radius:14px;border:0;background:var(--panel);color:var(--panel-fg);display:flex;align-items:center;justify-content:center;cursor:pointer}
+.rtbub{background:var(--fg);color:var(--bg);border-radius:14px;padding:8px 14px;font-weight:800;font-size:15px;text-align:center;margin:0 auto 8px;width:max-content;max-width:100%}
+.rtbub[hidden]{display:none}
+@keyframes rtup{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}@keyframes rtpop{0%{opacity:0;transform:scale(.7)}60%{transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}.rtp{animation:rtup .28s cubic-bezier(.2,.9,.3,1.1)}.rtbub{animation:rtpop .32s ease-out}.rtm{animation:rtpop .25s ease-out}.rts:active span{animation:rtpop .3s}.rtb:active{transform:scale(.92)}
+@media (prefers-reduced-motion:reduce){.rtp,.rtbub,.rtm{animation:none}.rtb.live{animation:none}}
 </style>
 </head>
 <body>
@@ -408,7 +432,7 @@ function vHome() {
     '<div class="game"><div class="num" style="background:#6C9BD1;color:#121213">٢</div><div class="t"><b>الجاسوس</b><span>٦ دقايق · ٣ لـ ٨ لاعبين · موبايل واحد</span></div><span class="tag">جاهزة</span></div>' +
     '<div class="game"><div class="num" style="background:#2F5F9A;color:#fff">٣</div><div class="t"><b>ثقافة عامة</b><span>٥ دقايق · لاعب لـ ٨ · موبايل واحد</span></div><span class="tag">جديدة</span></div>' +
     '<div class="game"><div class="num" style="background:#D3E2F3">٤</div><div class="t"><b>كمّل المثل</b><span>٤ دقايق · لاعب لـ ٨ · موبايل واحد</span></div><span class="tag">جديدة</span></div></div>' +
-    '<p class="note">نسخة ١٠</p>';
+    '<p class="note">نسخة ١١</p>';
 }
 function vJoin() {
   return bar('goHome', '') +
@@ -563,6 +587,7 @@ function render() {
     app.classList.remove('enter'); void app.offsetWidth; app.classList.add('enter');
     if (app.querySelector('[data-confetti]')) confetti();
   }
+  rtSync();
 }
 
 function toast(msg) {
@@ -1162,6 +1187,175 @@ setInterval(() => {
   if (f) f.style.width = Math.round(left / (DUR / 1000) * 100) + '%';
   hostTick();
 }, 250);
+
+/* ---------- صوت وشات وستيكرات القعدة (PeerJS، من موبايل لموبايل) ---------- */
+const RT = { peer: null, code: '', conns: {}, calls: {}, mic: null, muted: false, panel: '', chat: [], unread: 0, ac: null, starting: false, loading: null, timer: 0, audios: {} };
+const STK = [['laugh', '😂', 'ضحكة'], ['no', '❌', 'لا!'], ['yes', '✅', 'أيوه'], ['clap', '👏', 'تصفيق'], ['wow', '😱', 'يا نهار'], ['drum', '🥁', 'طبلة'], ['fan', '🎺', 'تاتا'], ['bore', '😴', 'ملل']];
+function rtAC() { try { if (!RT.ac) RT.ac = new (window.AudioContext || window.webkitAudioContext)(); if (RT.ac.state === 'suspended') RT.ac.resume(); } catch (e) {} return RT.ac; }
+['pointerdown', 'touchend', 'click'].forEach((ev) => document.addEventListener(ev, () => { if (S.screen === 'room') rtAC(); }, { passive: true }));
+function tone(ac, t0, f0, f1, dur, type, vol) {
+  const o = ac.createOscillator(), g = ac.createGain();
+  o.type = type || 'sine'; o.frequency.setValueAtTime(f0, t0); if (f1) o.frequency.exponentialRampToValueAtTime(f1, t0 + dur);
+  g.gain.setValueAtTime(0.0001, t0); g.gain.exponentialRampToValueAtTime(vol || 0.3, t0 + 0.02); g.gain.exponentialRampToValueAtTime(0.0001, t0 + dur);
+  o.connect(g); g.connect(ac.destination); o.start(t0); o.stop(t0 + dur + 0.05);
+}
+function noise(ac, t0, dur, vol) {
+  const n = Math.floor(ac.sampleRate * dur), b = ac.createBuffer(1, n, ac.sampleRate), d = b.getChannelData(0);
+  for (let i = 0; i < n; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / n);
+  const s = ac.createBufferSource(), g = ac.createGain(), f = ac.createBiquadFilter();
+  f.type = 'bandpass'; f.frequency.value = 2500; g.gain.value = vol || 0.4; s.buffer = b; s.connect(f); f.connect(g); g.connect(ac.destination); s.start(t0);
+}
+function playSfx(k) {
+  const ac = rtAC(); if (!ac) return; const t = ac.currentTime + 0.02;
+  if (k === 'laugh') { for (let i = 0; i < 6; i++) tone(ac, t + i * 0.13, 520 - i * 25, 380 - i * 20, 0.11, 'square', 0.18); }
+  else if (k === 'no') { tone(ac, t, 300, 120, 0.45, 'sawtooth', 0.3); tone(ac, t + 0.02, 150, 70, 0.45, 'square', 0.15); }
+  else if (k === 'yes') { tone(ac, t, 523, 0, 0.14, 'triangle', 0.35); tone(ac, t + 0.14, 784, 0, 0.3, 'triangle', 0.35); }
+  else if (k === 'clap') { for (let i = 0; i < 9; i++) noise(ac, t + i * 0.09 + Math.random() * 0.03, 0.07, 0.5); }
+  else if (k === 'wow') { tone(ac, t, 200, 900, 0.5, 'sine', 0.35); tone(ac, t + 0.5, 900, 700, 0.3, 'sine', 0.3); }
+  else if (k === 'drum') { tone(ac, t, 150, 45, 0.3, 'sine', 0.7); noise(ac, t + 0.3, 0.06, 0.3); tone(ac, t + 0.4, 150, 45, 0.3, 'sine', 0.7); noise(ac, t + 0.4, 0.05, 0.4); }
+  else if (k === 'fan') { [392, 392, 392, 523].forEach((f, i) => tone(ac, t + i * 0.16, f, 0, i === 3 ? 0.6 : 0.14, 'sawtooth', 0.18)); }
+  else if (k === 'bore') { [400, 360, 320, 240].forEach((f, i) => tone(ac, t + i * 0.25, f, f * 0.9, 0.24, 'triangle', 0.3)); }
+}
+function rtPid(uid) { return 'lamma' + RT.code + String(uid).replace(/[^A-Za-z0-9]/g, ''); }
+function rtLoad() {
+  if (window.Peer) return Promise.resolve();
+  if (RT.loading) return RT.loading;
+  RT.loading = new Promise((res, rej) => {
+    const s = document.createElement('script'); s.src = 'https://unpkg.com/peerjs@1.5.4/dist/peerjs.min.js';
+    s.onload = res; s.onerror = () => { RT.loading = null; rej(new Error('peerjs')); };
+    document.head.appendChild(s);
+    setTimeout(() => { if (!window.Peer) { RT.loading = null; rej(new Error('peerjs timeout')); } }, 12000);
+  });
+  return RT.loading;
+}
+function rtPlayers() { return PL().filter((p) => p.id !== S.uid); }
+function rtSend(m) { Object.keys(RT.conns).forEach((k) => { const c = RT.conns[k]; if (c && c.open) { try { c.send(m); } catch (e) {} } }); }
+function rtWire(c, uid) {
+  c.on('open', () => { RT.conns[uid] = c; rtMicCall(uid); rtUI(); });
+  c.on('data', (m) => rtOnData(uid, m));
+  const gone = () => { if (RT.conns[uid] === c) delete RT.conns[uid]; rtUI(); };
+  c.on('close', gone); c.on('error', gone);
+}
+function rtUidOf(peerId) { const p = PL().find((x) => rtPid(x.id) === peerId); return p ? p.id : null; }
+function rtOnData(uid, m) {
+  if (!m || typeof m !== 'object') return;
+  const name = nameOf(PL(), uid);
+  if (m.t === 'chat' && typeof m.x === 'string') {
+    RT.chat.push({ n: name, x: m.x.slice(0, 200), me: false }); if (RT.chat.length > 60) RT.chat.shift();
+    if (RT.panel !== 'chat') RT.unread++; rtUI();
+  } else if (m.t === 'sfx' && STK.some((s) => s[0] === m.k)) {
+    playSfx(m.k); const s = STK.find((x) => x[0] === m.k); rtBubble(name + ': ' + s[1] + ' ' + s[2]);
+  } else if (m.t === 'mic') { rtUI(); }
+}
+function rtBubble(txt) { const b = document.getElementById('rtb'); if (!b) return; b.textContent = txt; b.hidden = false; clearTimeout(rtBubble.h); rtBubble.h = setTimeout(() => { b.hidden = true; }, 2200); }
+function rtPlayRemote(uid, stream) {
+  let a = RT.audios[uid]; if (!a) { a = new Audio(); a.autoplay = true; a.playsInline = true; RT.audios[uid] = a; }
+  a.srcObject = stream; const p = a.play(); if (p && p.catch) p.catch(() => {});
+}
+function rtMicCall(uid) {
+  if (!RT.mic || !RT.peer || RT.calls[uid]) return;
+  try {
+    const call = RT.peer.call(rtPid(uid), RT.mic); RT.calls[uid] = call;
+    call.on('close', () => { if (RT.calls[uid] === call) delete RT.calls[uid]; });
+    call.on('error', () => { if (RT.calls[uid] === call) delete RT.calls[uid]; });
+  } catch (e) {}
+}
+function rtLink() {
+  if (!RT.peer || RT.peer.disconnected || RT.peer.destroyed) return;
+  rtPlayers().forEach((p) => {
+    const c = RT.conns[p.id];
+    if (c && c.open) return;
+    if (S.uid < p.id) { try { const nc = RT.peer.connect(rtPid(p.id), { reliable: true }); rtWire(nc, p.id); } catch (e) {} }
+  });
+}
+async function rtStart() {
+  if (RT.peer || RT.starting || !S.code || !S.uid) return;
+  RT.starting = true; RT.code = S.code;
+  try {
+    await rtLoad();
+    const peer = new window.Peer(rtPid(S.uid), { debug: 0 });
+    RT.peer = peer;
+    peer.on('open', () => { rtLink(); rtUI(); });
+    peer.on('connection', (c) => { const u = rtUidOf(c.peer); if (u) rtWire(c, u); else c.close(); });
+    peer.on('call', (call) => {
+      const u = rtUidOf(call.peer); if (!u) { call.close(); return; }
+      call.answer(); call.on('stream', (st) => rtPlayRemote(u, st)); call.on('close', () => { if (RT.audios[u]) RT.audios[u].srcObject = null; });
+    });
+    peer.on('disconnected', () => { try { peer.reconnect(); } catch (e) {} });
+    peer.on('error', () => {});
+    RT.timer = setInterval(rtLink, 4000);
+  } catch (e) { RT.fail = true; }
+  RT.starting = false; rtUI();
+}
+function rtStop() {
+  clearInterval(RT.timer);
+  if (RT.mic) { RT.mic.getTracks().forEach((t) => t.stop()); }
+  Object.keys(RT.audios).forEach((k) => { RT.audios[k].srcObject = null; });
+  try { if (RT.peer) RT.peer.destroy(); } catch (e) {}
+  RT.peer = null; RT.conns = {}; RT.calls = {}; RT.mic = null; RT.muted = false; RT.panel = ''; RT.chat = []; RT.unread = 0; RT.audios = {}; RT.code = ''; RT.fail = false;
+  const el = document.getElementById('rt'); if (el) el.hidden = true; document.body.classList.remove('rtOn');
+}
+async function rtToggleMic() {
+  if (RT.mic) {
+    if (RT.muted) { RT.muted = false; RT.mic.getAudioTracks().forEach((t) => { t.enabled = true; }); }
+    else { RT.muted = true; RT.mic.getAudioTracks().forEach((t) => { t.enabled = false; }); }
+    rtUI(); return;
+  }
+  try {
+    RT.mic = await navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true } });
+    RT.muted = false; rtPlayers().forEach((p) => rtMicCall(p.id)); toast('المايك شغال. دوس تاني عشان تكتم.');
+  } catch (e) { toast('مقدرتش أفتح المايك. اسمح للمتصفح بالمايك وجرّب تاني.'); }
+  rtUI();
+}
+function rtMicOff() {
+  if (!RT.mic) return;
+  RT.mic.getTracks().forEach((t) => t.stop()); RT.mic = null; RT.muted = false;
+  Object.keys(RT.calls).forEach((k) => { try { RT.calls[k].close(); } catch (e) {} }); RT.calls = {}; rtUI();
+}
+function rtUI() {
+  let el = document.getElementById('rt');
+  const on = S.screen === 'room' && !!S.room && !!S.code;
+  if (!on) { if (el) el.hidden = true; document.body.classList.remove('rtOn'); return; }
+  if (!el) { el = document.createElement('div'); el.id = 'rt'; document.body.appendChild(el); }
+  el.hidden = false; document.body.classList.add('rtOn');
+  const n = Object.keys(RT.conns).filter((k) => RT.conns[k] && RT.conns[k].open).length, tot = rtPlayers().length;
+  const st = RT.fail ? 'تعذّر تحميل الصوت' : (!RT.peer ? 'بنجهّز الصوت...' : (tot === 0 ? 'في انتظار لاعبين' : 'متصل بـ ' + ar(n) + ' من ' + ar(tot)));
+  const micL = !RT.mic ? 'المايك' : (RT.muted ? 'مكتوم' : 'شغال');
+  const keepIn = document.getElementById('rtin'), val = keepIn ? keepIn.value : '', hadFocus = !!keepIn && document.activeElement === keepIn, hadPanel = !!document.querySelector('#rt .rtp');
+  let panel = '';
+  if (RT.panel === 'stk') {
+    panel = '<div class="rtp"><div class="rtg">' + STK.map((s) => '<button type="button" class="rts" data-rt="sfx" data-k="' + s[0] + '"><span>' + s[1] + '</span><small>' + s[2] + '</small></button>').join('') + '</div></div>';
+  } else if (RT.panel === 'chat') {
+    panel = '<div class="rtp"><div class="rtc" id="rtlog">' + (RT.chat.length ? RT.chat.map((m) => '<div class="rtm' + (m.me ? ' me' : '') + '"><b>' + esc(m.n) + '</b><span>' + esc(m.x) + '</span></div>').join('') : '<p class="rte">مفيش رسايل لسه. اكتب حاجة.</p>') + '</div><form class="rtf" id="rtform"><input id="rtin" maxlength="200" autocomplete="off" placeholder="اكتب رسالة" aria-label="رسالة"><button type="submit" class="rtsend" aria-label="إرسال">' + ICON.next + '</button></form></div>';
+  }
+  el.innerHTML = '<div id="rtb" class="rtbub" hidden></div>' + panel +
+    '<div class="rtbar"><button type="button" class="rtb' + (RT.mic ? (RT.muted ? ' muted' : ' live') : '') + '" data-rt="mic"><span>' + (RT.mic && !RT.muted ? '🎙️' : (RT.mic ? '🔇' : '🎤')) + '</span><small>' + micL + '</small></button>' +
+    '<button type="button" class="rtb' + (RT.panel === 'stk' ? ' on' : '') + '" data-rt="stk"><span>🔊</span><small>أصوات</small></button>' +
+    '<button type="button" class="rtb' + (RT.panel === 'chat' ? ' on' : '') + '" data-rt="chat"><span>💬</span><small>شات</small>' + (RT.unread ? '<i class="rtn">' + ar(RT.unread) + '</i>' : '') + '</button>' +
+    '<div class="rtst">' + st + '</div></div>';
+  const inp = document.getElementById('rtin'); if (inp && val) inp.value = val; if (inp && hadFocus) { inp.focus(); } if (hadPanel) { const pp = el.querySelector('.rtp'); if (pp) pp.style.animation = 'none'; }
+  const lg = document.getElementById('rtlog'); if (lg) lg.scrollTop = lg.scrollHeight;
+}
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-rt]'); if (!b) return;
+  const a = b.getAttribute('data-rt'); rtAC(); buzz();
+  if (a === 'mic') rtToggleMic();
+  else if (a === 'stk' || a === 'chat') { RT.panel = RT.panel === a ? '' : a; if (a === 'chat') RT.unread = 0; rtUI(); if (a === 'chat') { const i = document.getElementById('rtin'); if (i) i.focus(); } }
+  else if (a === 'sfx') { const k = b.getAttribute('data-k'); playSfx(k); rtSend({ t: 'sfx', k: k }); const s = STK.find((x) => x[0] === k); rtBubble('أنت: ' + s[1] + ' ' + s[2]); }
+});
+document.addEventListener('submit', (e) => {
+  if (e.target.id !== 'rtform') return; e.preventDefault();
+  const i = document.getElementById('rtin'), x = (i.value || '').trim().slice(0, 200); if (!x) return;
+  i.value = ''; RT.chat.push({ n: 'أنت', x: x, me: true }); rtSend({ t: 'chat', x: x }); rtUI(); const n = document.getElementById('rtin'); if (n) n.focus();
+});
+function rtSync() {
+  if (S.screen === 'room' && S.room && S.code) {
+    if (RT.code && RT.code !== S.code) rtStop();
+    if (!RT.peer && !RT.starting) rtStart(); else rtLink();
+    if (RT.mic) rtPlayers().forEach((p) => rtMicCall(p.id));
+  } else if (RT.peer || RT.code) rtStop();
+  rtUI();
+}
 
 /* ---------- boot ---------- */
 const LINK = (() => { try { const c = new URLSearchParams(location.search).get('room'); return /^\d{4}$/.test(c || '') ? c : ''; } catch (e) { return ''; } })();
