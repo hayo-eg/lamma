@@ -179,7 +179,7 @@ body.rtOn #app{padding-bottom:96px}
 @keyframes rtup{from{opacity:0;transform:translateY(14px) scale(.97)}to{opacity:1;transform:none}}@keyframes rtpop{0%{opacity:0;transform:scale(.7)}60%{transform:scale(1.08)}100%{opacity:1;transform:scale(1)}}.rtp{animation:rtup .28s cubic-bezier(.2,.9,.3,1.1)}.rtbub{animation:rtpop .32s ease-out}.rtm{animation:rtpop .25s ease-out}.rts:active span{animation:rtpop .3s}.rtb:active{transform:scale(.92)}
 @media (prefers-reduced-motion:reduce){.rtp,.rtbub,.rtm{animation:none}.rtb.live{animation:none}}
 </style>
-</head>
+<meta property="og:title" content="لمّة | لعبة القعدة"><meta property="og:description" content="العب مع صحابك أونلاين: أسئلة، جاسوس، مايك وستيكرات بصوت وشات. ادخل بالكود!"><meta property="og:image" content="https://hayo-eg.github.io/lamma/card.png"><meta property="og:type" content="website"><meta name="twitter:card" content="summary_large_image"></head>
 <body>
 <main id="app" class="app"></main>
 <div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
@@ -396,6 +396,9 @@ const errLine = () => S.err ? '<p class="err" role="alert">' + esc(S.err) + '</p
 function vBoot() { return '<div class="center">' + logo() + '<p class="sub">ثواني ونبدأ...</p></div>'; }
 const BASE = location.href.split('#')[0].split('?')[0];
 const joinLink = (code) => BASE + '?room=' + code;
+function inviteText(c) {
+  return '🎉 لمّة، لعبة القعدة اللي هتضحّكنا!\nتعالوا العبوا معايا دلوقتي 👇\n\n🔑 كود القعدة: ' + ar(c) + '\n🔗 ' + joinLink(c) + '\n\n🎙️ مايك ، 🔊 ستيكرات بصوت ، 💬 شات، كله جوه القعدة.\nادخلوا بسرعة قبل ما نبدأ 😂';
+}
 const waLink = (text) => 'https://wa.me/?text=' + encodeURIComponent(text);
 const shareBtn = (label, text) => '<a class="btn ghost" href="' + waLink(text) + '" target="_blank" rel="noopener">' + label + '</a>';
 function titleOf(rank, n, v, top, low) {
@@ -432,7 +435,7 @@ function vHome() {
     '<div class="game"><div class="num" style="background:#6C9BD1;color:#121213">٢</div><div class="t"><b>الجاسوس</b><span>٦ دقايق · ٣ لـ ٨ لاعبين · موبايل واحد</span></div><span class="tag">جاهزة</span></div>' +
     '<div class="game"><div class="num" style="background:#2F5F9A;color:#fff">٣</div><div class="t"><b>ثقافة عامة</b><span>٥ دقايق · لاعب لـ ٨ · موبايل واحد</span></div><span class="tag">جديدة</span></div>' +
     '<div class="game"><div class="num" style="background:#D3E2F3">٤</div><div class="t"><b>كمّل المثل</b><span>٤ دقايق · لاعب لـ ٨ · موبايل واحد</span></div><span class="tag">جديدة</span></div></div>' +
-    '<p class="note">نسخة ١١</p>';
+    '<p class="note">نسخة ١٢</p>';
 }
 function vJoin() {
   return bar('goHome', '') +
@@ -457,7 +460,7 @@ function vLobby(ps) {
     : '<div class="status wait">استنى صاحب القعدة يبدأ اللعبة</div>';
   return bar('leave', 'صالة القعدة') +
     '<div class="codecard"><div><small>كود القعدة</small><strong>' + ar(S.code) + '</strong></div><button type="button" class="copy" data-act="copy">' + ICON.copy + '<span>انسخ</span></button></div>' +
-    shareBtn('ابعت الدعوة على واتساب', 'تعالى العب معايا لمّة. الكود: ' + S.code + '\n' + joinLink(S.code)) +
+    shareBtn('ابعت الدعوة على واتساب', inviteText(S.code)) +
     '<div class="stack"><div class="row"><div class="label">اللاعبين</div><div class="cnt">' + ar(ps.length) + ' من ' + ar(MAXP) + '</div></div><div class="grid">' + slots + '</div></div>' +
     '<div class="game"><div class="num" style="background:#6C9BD1">١</div><div class="t"><b>مين الأكتر احتمالاً</b><span>' + ar(NQ) + ' أسئلة · ' + ar(DUR / 1000) + ' ثانية لكل سؤال</span></div></div>' +
     '<div class="spacer"></div>' + action;
@@ -723,7 +726,7 @@ function castVote(id) {
   set(ref(db, 'rooms/' + S.code + '/votes/' + S.uid + '/' + r.g + '-' + r.q), id).catch(fail);
 }
 function copyCode() {
-  const txt = 'ادخل قعدة لمّة معايا. الكود: ' + ar(S.code) + '\n' + joinLink(S.code);
+  const txt = inviteText(S.code);
   const ok = () => toast('اتنسخ الكود واللينك');
   const no = () => toast('الكود: ' + ar(S.code));
   try {
