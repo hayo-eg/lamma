@@ -1,0 +1,1197 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#F2F5FF" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#0C0F2B" media="(prefers-color-scheme: dark)">
+<meta name="description" content="لمّة: ألعاب قعدة بالعامية تلعبها مع صحابك من الموبايل.">
+<title>لمّة</title>
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogItmE2YXZkdipIiwgInNob3J0X25hbWUiOiAi2YTZhdmR2KkiLCAibGFuZyI6ICJhciIsICJkaXIiOiAicnRsIiwgInN0YXJ0X3VybCI6ICIuIiwgInNjb3BlIjogIi4iLCAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwgImJhY2tncm91bmRfY29sb3IiOiAiI0YyRjVGRiIsICJ0aGVtZV9jb2xvciI6ICIjMTQxODNBIiwgImljb25zIjogW3sic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIWnBaWGRDYjNnOUlqQWdNQ0ExTVRJZ05URXlJajQ4Y21WamRDQjNhV1IwYUQwaU5URXlJaUJvWldsbmFIUTlJalV4TWlJZ2NuZzlJakV4TWlJZ1ptbHNiRDBpSXpFME1UZ3pRU0l2UGp4amFYSmpiR1VnWTNnOUlqRTRPQ0lnWTNrOUlqSXlOaUlnY2owaU9USWlJR1pwYkd3OUlpTkdSalJHT0RFaUx6NDhZMmx5WTJ4bElHTjRQU0l6TWpRaUlHTjVQU0l5TWpZaUlISTlJamt5SWlCbWFXeHNQU0lqTjBFMVEwWkdJaUJtYVd4c0xXOXdZV05wZEhrOUlpNDVNaUl2UGp4amFYSmpiR1VnWTNnOUlqSTFOaUlnWTNrOUlqTXpOaUlnY2owaU9USWlJR1pwYkd3OUlpTkdSa1F5TTBZaUlHWnBiR3d0YjNCaFkybDBlVDBpTGprMUlpOCtQQzl6ZG1jKyIsICJzaXplcyI6ICJhbnkiLCAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwgInB1cnBvc2UiOiAiYW55In1dfQ==">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0iIzE0MTgzQSIvPjxjaXJjbGUgY3g9IjE4OCIgY3k9IjIyNiIgcj0iOTIiIGZpbGw9IiNGRjRGODEiLz48Y2lyY2xlIGN4PSIzMjQiIGN5PSIyMjYiIHI9IjkyIiBmaWxsPSIjN0E1Q0ZGIiBmaWxsLW9wYWNpdHk9Ii45MiIvPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjMzNiIgcj0iOTIiIGZpbGw9IiNGRkQyM0YiIGZpbGwtb3BhY2l0eT0iLjk1Ii8+PC9zdmc+">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&display=swap">
+<style>
+:root{
+  --bg:#F2F5FF; --surface:#FFFFFF; --fg:#14183A; --muted:#545A80;
+  --panel:#14183A; --panel-fg:#F2F5FF; --track:#DCE2F7; --focus:#5B3FFF;
+  --orange:#FF4F81; --violet:#5B3FFF; --yellow:#FFD23F; --ink:#14183A; --err:#C2231C; --teal:#00B8A0; --ok:#0E9F6E;
+  --font:'Cairo','Segoe UI',Tahoma,system-ui,sans-serif; color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#0C0F2B; --surface:#171C47; --fg:#F2F5FF; --muted:#A9B0DA;
+    --panel:#222862; --panel-fg:#F2F5FF; --track:#2C3370; --focus:#A99BFF; --err:#FF9A85; --ok:#35D399;
+    color-scheme:dark;
+  }
+}
+*{box-sizing:border-box}
+html,body{height:100%;margin:0}
+body{
+  background:var(--bg); color:var(--fg); font-family:var(--font); direction:rtl;
+  padding:env(safe-area-inset-top,0px) max(16px,env(safe-area-inset-right,0px)) env(safe-area-inset-bottom,0px) max(16px,env(safe-area-inset-left,0px));
+  -webkit-text-size-adjust:100%;
+}
+button,input{font-family:inherit}
+.app{max-width:430px;margin:0 auto;min-height:100%;display:flex;flex-direction:column;gap:18px;padding-block:20px 24px}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;min-height:44px}
+.logo{display:flex;align-items:center;gap:8px}
+.logo .mark{display:block;flex:none;border-radius:11px;animation:bob 3.2s ease-in-out infinite}
+.logo b{font-size:32px;font-weight:900;line-height:1.2}
+.iconbtn{width:44px;height:44px;border-radius:14px;border:2px solid var(--fg);background:transparent;color:var(--fg);display:flex;align-items:center;justify-content:center;padding:0;cursor:pointer}
+.sp{width:44px}
+.ttl{font-size:20px;font-weight:900}
+h1{margin:0;font-size:34px;font-weight:900;line-height:1.3;text-wrap:balance}
+p{margin:0}
+.sub{font-size:16px;font-weight:500;line-height:1.6;color:var(--muted)}
+.hero{display:flex;flex-direction:column;gap:8px}
+.stack{display:flex;flex-direction:column;gap:12px}
+.field{display:flex;flex-direction:column;gap:8px}
+.field label{font-size:15px;font-weight:700}
+input[type=text]{height:60px;border:2px solid var(--fg);border-radius:16px;background:var(--surface);color:var(--fg);font-size:20px;font-weight:700;padding:0 16px;outline:none;width:100%}
+input.codein{height:84px;border:3px solid var(--violet);border-radius:20px;font-size:44px;font-weight:900;letter-spacing:.3em;text-align:center;padding:0}
+input:focus-visible,button:focus-visible{outline:3px solid var(--focus);outline-offset:2px}
+.btn{min-height:60px;border-radius:18px;border:2px solid transparent;display:flex;align-items:center;justify-content:center;gap:10px;font-size:20px;font-weight:900;cursor:pointer;padding:0 18px;width:100%}
+.btn.primary{background:var(--orange);color:var(--ink)}
+.btn.ghost{background:transparent;color:var(--fg);border-color:var(--fg);min-height:56px;font-size:18px;font-weight:700}
+.btn[disabled]{opacity:.45;cursor:not-allowed}
+.err{color:var(--err);font-size:15px;font-weight:700;line-height:1.6}
+.label{font-size:18px;font-weight:900}
+.games{display:flex;flex-direction:column;gap:10px}
+.game{min-height:70px;border-radius:16px;background:var(--surface);padding:10px 14px;display:flex;align-items:center;gap:14px}
+.game.soon{opacity:.6}
+.num{width:44px;height:44px;flex:none;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:900;color:var(--ink)}
+.game .t{flex:1;min-width:0;display:flex;flex-direction:column}
+.game .t b{font-size:17px;font-weight:700}
+.game .t span{font-size:13px;font-weight:500;color:var(--muted)}
+.tag{font-size:13px;font-weight:900;border-radius:10px;padding:4px 10px;background:var(--yellow);color:var(--ink);white-space:nowrap}
+.tag.off{background:var(--track);color:var(--fg)}
+.codecard{border-radius:24px;background:var(--panel);color:var(--panel-fg);padding:18px 20px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.codecard small{display:block;font-size:14px;font-weight:500;color:var(--yellow)}
+.codecard strong{display:block;font-size:54px;font-weight:900;line-height:1.2;letter-spacing:.15em}
+.copy{min-height:48px;border-radius:14px;border:none;background:var(--yellow);color:var(--ink);font-size:16px;font-weight:900;padding:0 14px;display:flex;align-items:center;gap:8px;cursor:pointer}
+.row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.cnt{font-size:14px;font-weight:700;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.pl{min-height:56px;border-radius:16px;background:var(--surface);padding:8px 12px;display:flex;align-items:center;gap:10px;min-width:0}
+.pl .n{font-size:16px;font-weight:700;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pl .me{font-size:12px;font-weight:700;color:var(--muted)}
+.av{width:36px;height:36px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900}
+.empty{grid-column:span 2;min-height:56px;border-radius:16px;border:2px dashed var(--muted);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:500;color:var(--muted);text-align:center;padding:0 12px}
+.note{font-size:14px;font-weight:500;color:var(--muted);text-align:center;line-height:1.6}
+.spacer{flex:1}
+.meta{display:flex;align-items:center;justify-content:space-between}
+.meta span{font-size:15px;font-weight:700;color:var(--muted)}
+.timer{display:flex;align-items:center;gap:6px;font-size:18px;font-weight:900;font-variant-numeric:tabular-nums}
+.track{height:10px;border-radius:5px;background:var(--track);overflow:hidden}
+.fill{height:100%;border-radius:5px;background:var(--orange)}
+.qcard{border-radius:24px;background:var(--panel);color:var(--panel-fg);padding:26px 22px;display:flex;flex-direction:column;gap:10px}
+.qcard small{font-size:14px;font-weight:700;color:var(--yellow)}
+.qcard div{font-size:30px;font-weight:900;line-height:1.4;text-wrap:balance}
+.vote{min-height:96px;border-radius:20px;border:2px solid var(--fg);background:var(--surface);color:var(--fg);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;padding:8px;cursor:pointer;min-width:0}
+.vote.sel{border:4px solid var(--violet);padding:6px}
+.vote .av{width:40px;height:40px;font-size:20px}
+.vote .n{font-size:17px;font-weight:700;max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vote.sel .n{font-weight:900}
+.status{min-height:60px;border-radius:18px;display:flex;align-items:center;justify-content:center;gap:10px;font-size:18px;font-weight:900;text-align:center;padding:0 14px}
+.status.ok{background:var(--violet);color:#FFFFFF}
+.status.wait{border:2px dashed var(--muted);color:var(--muted);font-weight:700}
+.win{border-radius:28px;background:var(--orange);color:var(--ink);padding:24px 22px;display:flex;flex-direction:column;gap:6px;animation:pop .25s ease-out}
+.win .q{font-size:16px;font-weight:700;line-height:1.5}
+.win .name{font-size:clamp(44px,17vw,74px);font-weight:900;line-height:1.2;text-wrap:balance;overflow-wrap:anywhere}
+.win .name.long{font-size:36px;line-height:1.35}
+.badge{align-self:flex-start;min-height:44px;border-radius:22px;background:var(--ink);color:var(--yellow);padding:0 18px;display:flex;align-items:center;gap:8px;font-size:17px;font-weight:900}
+.bars{display:flex;flex-direction:column;gap:10px}
+.br{display:flex;align-items:center;gap:10px}
+.br .n{width:84px;flex:none;font-size:16px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.br .tr{flex:1;height:28px;border-radius:14px;background:var(--track);overflow:hidden}
+.br .f{height:100%;border-radius:14px}
+.br .c{width:28px;text-align:left;font-size:20px;font-weight:900}
+.rank{display:flex;flex-direction:column;gap:10px}
+.rk{min-height:60px;border-radius:16px;background:var(--surface);padding:8px 14px;display:flex;align-items:center;gap:12px}
+.rk.first{background:var(--panel);color:var(--panel-fg)}
+.rk .pos{width:34px;height:34px;flex:none;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:900;background:var(--track);color:var(--fg)}
+.rk.first .pos{background:var(--yellow);color:var(--ink)}
+.rk .n{flex:1;min-width:0;font-size:18px;font-weight:700;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.rk.first .n{font-weight:900}
+.rk .v{font-size:18px;font-weight:900}
+.rk.first .v{color:var(--yellow)}
+.center{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center}
+.toast{position:fixed;left:50%;transform:translateX(-50%);bottom:calc(24px + env(safe-area-inset-bottom,0px));background:var(--fg);color:var(--bg);border-radius:14px;padding:12px 18px;font-size:15px;font-weight:700;max-width:calc(100% - 32px);z-index:20;text-align:center}
+.toast[hidden]{display:none}
+.locs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.loc{min-height:48px;border-radius:14px;border:2px solid var(--fg);background:var(--surface);color:var(--fg);font-size:16px;font-weight:700;padding:6px 10px;cursor:pointer}
+.loc.sel{border:4px solid var(--violet);padding:4px 8px}
+.chipx{min-height:40px;border-radius:12px;background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:15px;font-weight:700;padding:4px 8px;text-align:center}
+a.btn{text-decoration:none}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips .loc{padding:6px 16px}
+.chips .loc.sel{padding:4px 14px}
+.rk .n small{display:block;font-size:12px;font-weight:500;opacity:.8}
+.dbg{direction:ltr;font-size:13px;color:var(--muted);word-break:break-all}
+html{overscroll-behavior:none}
+button{-webkit-tap-highlight-color:transparent;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.btn:active,.vote:active,.loc:active,.copy:active,.iconbtn:active{transform:scale(.97)}
+input.codein{direction:ltr}
+body{-webkit-font-smoothing:antialiased}
+
+@keyframes bob{0%,100%{transform:translateY(0) rotate(0)}50%{transform:translateY(-3px) rotate(-4deg)}}
+@keyframes rise{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%{transform:scale(1)}40%{transform:scale(1.045)}100%{transform:scale(1)}}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+@keyframes fall{0%{transform:translate3d(0,-12vh,0) rotate(0);opacity:1}100%{transform:translate3d(var(--dx),108vh,0) rotate(var(--rot));opacity:.9}}
+@keyframes shine{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.app.enter>*{animation:rise .42s cubic-bezier(.2,.8,.2,1) both}
+.app.enter>*:nth-child(2){animation-delay:.05s}.app.enter>*:nth-child(3){animation-delay:.1s}.app.enter>*:nth-child(4){animation-delay:.15s}.app.enter>*:nth-child(5){animation-delay:.2s}.app.enter>*:nth-child(n+6){animation-delay:.25s}
+.app.enter .games>.game{animation:rise .45s cubic-bezier(.2,.8,.2,1) both}
+.app.enter .games>.game:nth-child(2){animation-delay:.2s}.app.enter .games>.game:nth-child(3){animation-delay:.27s}.app.enter .games>.game:nth-child(4){animation-delay:.34s}.app.enter .games>.game:nth-child(5){animation-delay:.41s}
+.btn.primary{background-image:linear-gradient(110deg,transparent 35%,rgba(255,255,255,.35) 50%,transparent 65%);background-size:250% 100%;background-repeat:no-repeat;animation:shine 4.5s ease-in-out infinite}
+.btn.primary[disabled]{animation:none}
+.vote.sel,.loc.sel{animation:pulse .3s ease-out}
+.btn,.vote,.loc,.game{transition:transform .12s ease,background-color .2s,border-color .2s}
+.btn:hover,.game:hover{transform:translateY(-1px)}
+.conf{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:30}
+.conf i{position:absolute;top:0;width:10px;height:16px;border-radius:3px;animation:fall var(--d) cubic-bezier(.3,.1,.6,1) var(--l) forwards}
+.opt{min-height:64px;border-radius:18px;border:2px solid var(--fg);background:var(--surface);color:var(--fg);font-size:19px;font-weight:700;padding:8px 16px;display:flex;align-items:center;justify-content:space-between;gap:10px;text-align:right;cursor:pointer;width:100%;line-height:1.4}
+.opt .k{width:32px;height:32px;flex:none;border-radius:10px;background:var(--track);display:flex;align-items:center;justify-content:center;font-size:16px;font-weight:900}
+.opt .t{flex:1;min-width:0}
+.opt.right{background:var(--ok);border-color:var(--ok);color:#06241A;animation:pulse .45s ease-out}
+.opt.wrong{background:var(--err);border-color:var(--err);color:#fff;animation:shake .45s ease-out}
+.opt.dim{opacity:.5}
+.opts{display:flex;flex-direction:column;gap:10px}
+.qcard.big div{font-size:26px}
+.pts{display:inline-flex;align-items:center;gap:6px;font-size:15px;font-weight:900}
+@media (prefers-reduced-motion: reduce){.app.enter>*,.app.enter .games>.game,.logo .mark,.btn.primary,.vote.sel,.opt.right,.opt.wrong{animation:none!important}.conf{display:none}}
+@keyframes pop{from{transform:scale(.96);opacity:.6}to{transform:scale(1);opacity:1}}
+@media (prefers-reduced-motion: reduce){.win{animation:none}}
+</style>
+</head>
+<body>
+<main id="app" class="app"></main>
+<div id="toast" class="toast" role="status" aria-live="polite" hidden></div>
+
+<script type="module">
+/* Firebase بيتحمّل وقت التشغيل (مش في أول الصفحة) عشان وضع الموبايل الواحد يشتغل حتى من غير نت. */
+let initializeApp, getAuth, onAuthStateChanged, signInAnonymously;
+let getDatabase, ref, get, set, update, remove, onValue;
+
+/* إعدادات Firebase. القيم دي مش سر. اتأكد إن الـ apiKey مطابق للي في Project settings. */
+const CFG = {
+  apiKey: "AIzaSyDjuQKg5wEn26B7EH-MHtv-T9Yi5wgpkys",
+  authDomain: "lmma-125bd.firebaseapp.com",
+  databaseURL: "https://lmma-125bd-default-rtdb.firebaseio.com",
+  projectId: "lmma-125bd",
+  appId: "1:22625661575:web:9c0ba9b3a769ebb8aabe22"
+};
+
+const DUR = 20000, NQ = 6, MAXP = 8;
+const QGROUPS = [
+  { key: 'friends', label: 'أصحاب', qs: [
+'ينسى عيد ميلاد صاحبه؟',
+      'يقول "أنا جاي في الطريق" وهو لسه في البيت؟',
+    'ينام في نص الفيلم؟',
+    'ياكل من طبق حد تاني من غير ما يستأذن؟',
+    'يبقى مشهور بكرة الصبح؟',
+    'يضيع في شارع بيعدي منه كل يوم؟',
+    'يعيط في إعلان؟',
+    'يرد على الرسالة بعد يومين؟',
+    'يشتري حاجة مش محتاجها لأن عليها خصم؟',
+    'يقول "ثواني بس" وهو ماسك الموبايل نص ساعة؟',
+    'يضحك في وقت مش مناسب خالص؟',
+    'يبدأ ريجيم يوم الاتنين وينساه يوم التلات؟',
+    'ينام يوم الإجازة لحد العصر؟',
+    'يقول "هنام بدري النهاردة" ويسهر للفجر؟',
+    'يفتكر تفاصيل غريبة من سنين فاتت؟',
+    'يخلص أكله الأول ويطلب تاني؟',
+    'يفاصل في السعر لحد ما البياع يزهق؟',
+    'يسيب الشاحن في بيت حد ويمشي؟',
+    'يحكي حدوتة قصيرة في نص ساعة؟',
+    'يصاحب أي حد في أي مكان؟',
+    'يكسب مليون جنيه ويصرفهم في أسبوع؟',
+    'يصرخ من صرصار أعلى من الكل؟',
+    'ينزل ستوري ويمسحها بعد دقيقة؟',
+    'يفتح التلاجة كل خمس دقايق وهو عارف إن مفيش جديد؟',
+    'يسيب الكل ويمشي من الخروجة من غير ما يقول؟',
+    'يرد على المكالمة بصوت نايم وهو صاحي من بدري؟',
+    'يقول "أنا مش زعلان" وهو زعلان جداً؟',
+    'يبعت ميم في وقت جد؟',
+    'يتأخر ساعة ويقول "أنا قدام الباب"؟',
+    'يغني في العربية بصوت عالي وهو فاكر إن مفيش حد سامعه؟',
+    'يحجز تذكرة سفر في آخر لحظة؟',
+    'يقول "هدفع أنا" وبعدين يختفي وقت الحساب؟',
+    'يعمل حساب جديد على السوشيال كل أسبوع؟',
+    'يسمع نفس الأغنية خمسين مرة ورا بعض؟',
+    'يحب يعمل مقلب في صحابه؟',
+    'يفتكر عيد ميلاد كل الناس وينسى عيد ميلاده هو؟'
+  ] },
+  { key: 'family', label: 'عيلة', qs: [
+    'يصحّي الكل الصبح عشان يطلب فطار؟',
+    'يمسك الريموت ومحدش يعرف يغيّر القناة؟',
+    'يحكي نفس الحدوتة في كل عزومة؟',
+    'يقول لأمه "مش جعان" وبعد خمس دقايق يفتح التلاجة؟',
+    'يتخانق على آخر حتة أكل في الطبق؟',
+    'يعمل نفسه نايم عشان ميروحش مشوار؟',
+    'يسأل عن حاجة وهي في إيده؟',
+    'يخبّي حاجة حلوة من الأولاد لنفسه؟',
+    'يفتكر كل الأقارب وأسمائهم وأعياد ميلادهم؟',
+    'يقول "بعد خمس دقايق" ويقصد ساعة؟',
+    'يتحكم في تكييف البيت كله؟',
+    'يرجع البيت متأخر ويدخل على أطراف صوابعه؟',
+    'يكسر حاجة في البيت ويلبّسها لحد تاني؟',
+    'يفضل يقول "في أيامنا كان أحسن"؟',
+    'يفضل على الموبايل لحد ما أمه تنده عليه خمس مرات؟',
+    'يقول "أنا هطبخ النهاردة" وبعدين يطلب دليفري؟'
+  ] },
+  { key: 'work', label: 'شغل وجامعة', qs: [
+    'يوصل متأخر ويقول "الطريق زحمة" كل مرة؟',
+    'يذاكر آخر ليلة قبل الامتحان؟',
+    'يكتب إيميل طويل والرد عليه كلمة واحدة؟',
+    'ينام في نص المحاضرة أو الاجتماع؟',
+    'ينسخ الواجب من صاحبه؟',
+    'يأجّل المشروع لحد آخر يوم؟',
+    'يقول "هخلصه النهاردة" من أسبوع؟',
+    'يخلّص الشاي والقهوة بتوع المكتب كلها؟',
+    'يدخل اجتماع وكاميرته مقفولة وهو بياكل؟',
+    'يرد على رسايل الشغل الساعة ٣ الفجر؟',
+    'يقول "ده مش شغلي" على أي حاجة جديدة؟',
+    'يسأل "كان في واجب؟" بعد ما الكل سلّم؟',
+    'يضيّع الملف قبل التسليم بساعة؟',
+    'يقعد في آخر الصف عشان محدش يسأله؟',
+    'يقول "معاك حق" في الاجتماع وهو مسمعش حاجة؟',
+    'يشتكي من الشغل وهو أكتر واحد بيتأخر فيه؟'
+  ] },
+  { key: 'out', label: 'خروجات', qs: [
+    'يضيع في المول ويكلمنا نجيبه؟',
+    'يطلب أغلى حاجة في المنيو وهو ناوي يقسم الحساب؟',
+    'يقعد في الكافيه خمس ساعات بكوباية واحدة؟',
+    'يقعد في الضل طول يوم الشاطئ؟',
+    'يصوّر الأكل قبل ما ياكل لحد ما يبرد؟',
+    'يغيّر رأيه في المطعم خمس مرات؟',
+    'يركب أول ميكروباص ويفتكر إنه رايح المكان الصح؟',
+    'ينسى المحفظة في البيت ويكتشف عند الحساب؟',
+    'ياخد ألف سيلفي في رحلة يوم واحد؟',
+    'يخاف من الأفعوانية وبعدين يركبها أول واحد؟',
+    'ياخد شنطة كبيرة لرحلة يوم واحد؟',
+    'يسأل "فاضل كام على ما نوصل؟" كل خمس دقايق؟',
+    'يدوّر على ركنة نص ساعة؟',
+    'ينام في العربية طول الطريق؟'
+  ] }
+];
+const QUESTIONS = [].concat.apply([], QGROUPS.map((g) => g.qs));
+(function () { let i = 0; QGROUPS.forEach((g) => { g.from = i; i += g.qs.length; g.to = i; }); })();
+const COLORS = [
+  { bg: '#FF4F81', fg: '#14183A' }, { bg: '#5B3FFF', fg: '#FFFFFF' },
+  { bg: '#FFD23F', fg: '#14183A' }, { bg: '#00B8A0', fg: '#06241F' },
+  { bg: '#F0701F', fg: '#1A0E05' }, { bg: '#4C8DF6', fg: '#0F1B33' },
+  { bg: '#7BD35B', fg: '#112409' }, { bg: '#B58CF0', fg: '#14183A' }
+];
+const AR = '٠١٢٣٤٥٦٧٨٩';
+const ICON = {
+  plus: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
+  back: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>',
+  next: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg>',
+  copy: '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V6a2 2 0 012-2h9"/></svg>',
+  clock: '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2 2M9 3h6"/></svg>',
+  check: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5 9-10"/></svg>',
+  cup: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 4h10v5a5 5 0 01-10 0V4zM7 6H4v2a3 3 0 003 3M17 6h3v2a3 3 0 01-3 3M12 14v4M8 20h8"/></svg>'
+};
+
+const $ = (id) => document.getElementById(id);
+let wlock = null, wantWake = false;
+function wakeSet(on) {
+  wantWake = on;
+  if (on) {
+    try {
+      if ('wakeLock' in navigator) navigator.wakeLock.request('screen').then((l) => {
+        if (wantWake) wlock = l; else l.release().catch(() => {});
+      }).catch(() => {});
+    } catch (e) {}
+  } else if (wlock) {
+    try { wlock.release().catch(() => {}); } catch (e) {}
+    wlock = null;
+  }
+}
+document.addEventListener('visibilitychange', () => { if (document.visibilityState === 'visible' && wantWake) wakeSet(true); });
+const ar = (n) => String(n).replace(/\d/g, (d) => AR[+d]);
+const digits = (s) => String(s).replace(/[٠-٩]/g, (d) => AR.indexOf(d));
+const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+const cleanName = (s) => Array.from(String(s || '').replace(/\s+/g, ' ').trim()).slice(0, 12).join('');
+const buzz = (ms) => { try { if (navigator.vibrate) navigator.vibrate(ms || 10); } catch (e) {} };
+const clock = (s) => ar(Math.floor(s / 60)) + ':' + ar(String(s % 60).padStart(2, '0'));
+
+const KEY = 'lamma:v1';
+function load() { try { return JSON.parse(localStorage.getItem(KEY) || '{}') || {}; } catch (e) { return {}; } }
+function save() { try { localStorage.setItem(KEY, JSON.stringify({ name: S.name, code: S.code, onames: O.names, ogame: O.game, ocat: O.cat })); } catch (e) {} }
+
+const S = {
+  online: null, uid: null, screen: 'home', name: '', codeInput: '', code: '',
+  room: undefined, err: '', busy: false, advKey: ''
+};
+let db = null, auth = null, offRoom = null, offset = 0;
+const now = () => Date.now() + offset;
+
+/* ---------- derived data ---------- */
+function PL() {
+  const p = (S.room && S.room.players) || {};
+  return Object.keys(p).map((id) => ({ id: id, name: p[id].name, t: p[id].t || 0 }))
+    .sort((a, b) => a.t - b.t || (a.id < b.id ? -1 : 1));
+}
+function QS() {
+  const q = S.room && S.room.qs;
+  if (!q) return [];
+  return Array.isArray(q) ? q : Object.keys(q).sort((a, b) => a - b).map((k) => q[k]);
+}
+const VOTES = () => (S.room && S.room.votes) || {};
+const isHost = () => !!(S.room && S.room.host === S.uid);
+function tally(ps, key) {
+  const t = {}, v = VOTES();
+  ps.forEach((p) => { t[p.id] = 0; });
+  ps.forEach((p) => { const x = v[p.id] && v[p.id][key]; if (x != null && t[x] !== undefined) t[x]++; });
+  return t;
+}
+function votedCount(ps, key) {
+  const v = VOTES();
+  return ps.filter((p) => v[p.id] && v[p.id][key] != null).length;
+}
+function totals(ps) {
+  const r = S.room, n = QS().length;
+  const upto = r.phase === 'vote' ? r.q : (r.phase === 'result' ? r.q + 1 : n);
+  const t = {};
+  ps.forEach((p) => { t[p.id] = 0; });
+  for (let q = 0; q < upto; q++) {
+    const tq = tally(ps, r.g + '-' + q);
+    for (const id in tq) t[id] += tq[id];
+  }
+  return t;
+}
+function topOf(ps, t) {
+  let max = 0;
+  ps.forEach((p) => { if (t[p.id] > max) max = t[p.id]; });
+  const ids = max > 0 ? ps.filter((p) => t[p.id] === max).map((p) => p.id) : [];
+  return { max: max, ids: ids };
+}
+const idxOf = (ps, id) => Math.max(0, ps.findIndex((p) => p.id === id));
+const colorOf = (ps, id) => COLORS[idxOf(ps, id) % COLORS.length];
+const nameOf = (ps, id) => { const p = ps.find((x) => x.id === id); return p ? p.name : '؟'; };
+function avatar(ps, p) {
+  const c = colorOf(ps, p.id);
+  return '<span class="av" style="background:' + c.bg + ';color:' + c.fg + '">' + esc(Array.from(p.name || '؟')[0] || '؟') + '</span>';
+}
+function secsLeft() { return S.room ? Math.min(DUR / 1000, Math.max(0, Math.ceil((S.room.qEnd - now()) / 1000))) : 0; }
+
+/* ---------- views ---------- */
+const logo = () => '<div class="logo"><svg class="mark" width="40" height="40" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="120" fill="#14183A"/><circle cx="188" cy="226" r="92" fill="#FF4F81"/><circle cx="324" cy="226" r="92" fill="#7A5CFF" fill-opacity=".92"/><circle cx="256" cy="336" r="92" fill="#FFD23F" fill-opacity=".95"/></svg><b>لمّة</b></div>';
+const bar = (act, title) => '<div class="bar"><button type="button" class="iconbtn" data-act="' + act + '" aria-label="رجوع">' + ICON.back + '</button>' + (title ? '<div class="ttl">' + title + '</div>' : logo()) + '<span class="sp"></span></div>';
+const errLine = () => S.err ? '<p class="err" role="alert">' + esc(S.err) + '</p>' : '';
+
+function vBoot() { return '<div class="center">' + logo() + '<p class="sub">ثواني ونبدأ...</p></div>'; }
+const BASE = location.href.split('#')[0].split('?')[0];
+const joinLink = (code) => BASE + '?room=' + code;
+const waLink = (text) => 'https://wa.me/?text=' + encodeURIComponent(text);
+const shareBtn = (label, text) => '<a class="btn ghost" href="' + waLink(text) + '" target="_blank" rel="noopener">' + label + '</a>';
+function titleOf(rank, n, v, top, low) {
+  if (!top) return '';
+  if (v === top) return 'ملك القعدة';
+  if (n > 2 && rank === n - 1 && v === low) return 'الهادي';
+  return rank === 1 ? 'وزير القعدة' : (rank === 2 ? 'أمير القعدة' : '');
+}
+function rankRow(rank, first, name, valText, title) {
+  return '<div class="rk' + (first ? ' first' : '') + '"><span class="pos">' + ar(rank + 1) + '</span><span class="n">' + esc(name) + (title ? '<small>' + title + '</small>' : '') + '</span><span class="v">' + valText + '</span></div>';
+}
+let deferredInstall = null;
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault(); deferredInstall = e;
+  const a = document.activeElement;
+  if (S.screen === 'home' && !(a && a.tagName === 'INPUT')) render();
+});
+function installApp() {
+  if (!deferredInstall) return;
+  try { deferredInstall.prompt(); } catch (e) {}
+  deferredInstall = null; render();
+}
+function vHome() {
+  return '<div class="bar">' + logo() + '</div>' +
+    '<div class="hero"><h1>القعدة مش هتبقى ملل تاني</h1><p class="sub">العب مع صحابك من موبايلاتكم. مفيش تحميل لحد.</p></div>' +
+    '<div class="field"><label for="name">اسمك إيه؟</label><input type="text" id="name" maxlength="12" autocomplete="off" value="' + esc(S.name) + '" placeholder="اكتب اسمك">' + errLine() + '</div>' +
+    '<div class="stack"><button type="button" class="btn primary" data-act="create"' + (S.busy ? ' disabled' : '') + '>' + ICON.plus + '<span>ابدأ قعدة جديدة</span></button>' +
+    '<button type="button" class="btn ghost" data-act="goJoin">معايا كود قعدة</button>' +
+    '<button type="button" class="btn ghost" data-act="goOff">العب من موبايل واحد (من غير نت)</button>' +
+    (deferredInstall ? '<button type="button" class="btn ghost" data-act="install">ثبّت لمّة على موبايلك</button>' : '') +
+    '<p class="note" id="net">' + netText() + '</p></div>' +
+    '<div class="games"><div class="label">الألعاب</div>' +
+    '<div class="game"><div class="num" style="background:#FF4F81">١</div><div class="t"><b>مين الأكتر احتمالاً</b><span>٣ دقايق · ٢ لـ ٨ لاعبين</span></div><span class="tag">جاهزة</span></div>' +
+    '<div class="game"><div class="num" style="background:#00B8A0;color:#06241F">٢</div><div class="t"><b>الجاسوس</b><span>٦ دقايق · ٣ لـ ٨ لاعبين · موبايل واحد</span></div><span class="tag">جاهزة</span></div>' +
+    '<div class="game"><div class="num" style="background:#5B3FFF;color:#fff">٣</div><div class="t"><b>ثقافة عامة</b><span>٥ دقايق · لاعب لـ ٨ · موبايل واحد</span></div><span class="tag">جديدة</span></div>' +
+    '<div class="game"><div class="num" style="background:#FFD23F">٤</div><div class="t"><b>كمّل المثل</b><span>٤ دقايق · لاعب لـ ٨ · موبايل واحد</span></div><span class="tag">جديدة</span></div></div>' +
+    '<p class="note">نسخة ٩</p>';
+}
+function vJoin() {
+  return bar('goHome', '') +
+    '<div class="hero"><h1>ادخل القعدة</h1><p class="sub">اكتب الكود اللي مع صاحب القعدة.</p></div>' +
+    '<div id="joinForm" class="stack" style="flex:1">' +
+    '<div class="field"><label for="code">كود القعدة</label><input type="text" id="code" class="codein" inputmode="numeric" maxlength="4" value="' + esc(S.codeInput) + '" placeholder="٠٠٠٠"></div>' +
+    '<div class="field"><label for="name">اسمك إيه؟</label><input type="text" id="name" maxlength="12" value="' + esc(S.name) + '" placeholder="اكتب اسمك">' + errLine() + '</div>' +
+    '<div class="spacer"></div><button type="button" class="btn primary" data-act="join"' + (S.busy ? ' disabled' : '') + '>ادخل</button></div>';
+}
+function vWaitRoom() { return '<div class="center">' + logo() + '<p class="sub">جاري الدخول للقعدة...</p></div>'; }
+
+function vLobby(ps) {
+  let slots = '';
+  ps.forEach((p) => {
+    slots += '<div class="pl">' + avatar(ps, p) + '<span class="n">' + esc(p.name) + '</span>' + (p.id === S.uid ? '<span class="me">(أنت)</span>' : '') + '</div>';
+  });
+  if (ps.length < MAXP) slots += '<div class="empty">في انتظار لاعبين تانيين...</div>';
+  const canStart = ps.length >= 2;
+  const action = isHost()
+    ? '<button type="button" class="btn primary" data-act="start"' + (canStart ? '' : ' disabled') + '>ابدأ اللعبة</button>' +
+      (canStart ? '' : '<p class="note">محتاج لاعب واحد على الأقل يدخل. الأحسن ٣ أو أكتر.</p>')
+    : '<div class="status wait">استنى صاحب القعدة يبدأ اللعبة</div>';
+  return bar('leave', 'صالة القعدة') +
+    '<div class="codecard"><div><small>كود القعدة</small><strong>' + ar(S.code) + '</strong></div><button type="button" class="copy" data-act="copy">' + ICON.copy + '<span>انسخ</span></button></div>' +
+    shareBtn('ابعت الدعوة على واتساب', 'تعالى العب معايا لمّة. الكود: ' + S.code + '\n' + joinLink(S.code)) +
+    '<div class="stack"><div class="row"><div class="label">اللاعبين</div><div class="cnt">' + ar(ps.length) + ' من ' + ar(MAXP) + '</div></div><div class="grid">' + slots + '</div></div>' +
+    '<div class="game"><div class="num" style="background:#FF4F81">١</div><div class="t"><b>مين الأكتر احتمالاً</b><span>' + ar(NQ) + ' أسئلة · ' + ar(DUR / 1000) + ' ثانية لكل سؤال</span></div></div>' +
+    '<div class="spacer"></div>' + action;
+}
+
+function vVote(ps) {
+  const r = S.room, key = r.g + '-' + r.q, qs = QS();
+  const mine = VOTES()[S.uid] && VOTES()[S.uid][key];
+  const voted = votedCount(ps, key), left = secsLeft();
+  let btns = '';
+  ps.forEach((p) => {
+    const sel = mine === p.id;
+    btns += '<button type="button" class="vote' + (sel ? ' sel' : '') + '" data-act="vote" data-id="' + esc(p.id) + '" aria-pressed="' + sel + '">' +
+      avatar(ps, p) + '<span class="n">' + esc(p.name) + (p.id === S.uid ? ' (أنت)' : '') + '</span></button>';
+  });
+  const stalled = !isHost() && now() > r.qEnd + 20000;
+  const status = stalled
+    ? '<div class="status wait">صاحب القعدة مش بيكمّل. اخرج وابدأوا قعدة جديدة.</div><button type="button" class="btn ghost" data-act="leave">خروج</button>'
+    : mine
+    ? '<div class="status ok">' + ICON.check + '<span>صوتك اتسجّل. استنى الباقي (' + ar(voted) + ' من ' + ar(ps.length) + ')</span></div>'
+    : '<div class="status wait">اختار واحد</div>';
+  return '<div class="stack"><div class="meta"><span>سؤال ' + ar(r.q + 1) + ' من ' + ar(qs.length) + '</span><div class="timer">' + ICON.clock + '<span id="timer">' + clock(left) + '</span></div></div>' +
+    '<div class="track"><div class="fill" id="tbar" style="width:' + Math.round(left / (DUR / 1000) * 100) + '%"></div></div></div>' +
+    '<div class="qcard"><small>مين الأكتر احتمالاً...</small><div>' + esc(QUESTIONS[qs[r.q]]) + '</div></div>' +
+    '<div class="grid">' + btns + '</div><div class="spacer"></div>' + status;
+}
+
+function vResult(ps) {
+  const r = S.room, key = r.g + '-' + r.q, qs = QS();
+  const t = tally(ps, key), top = topOf(ps, t), n = votedCount(ps, key);
+  const names = top.ids.map((id) => nameOf(ps, id));
+  let title, sub = '';
+  if (!top.ids.length) title = 'محدش صوّت';
+  else if (top.ids.length === 1) { title = esc(names[0]); sub = ar(top.max) + ' من ' + ar(n) + ' أصوات'; }
+  else { title = esc(names.join(' و ')); sub = 'تعادل. كل واحد ' + ar(top.max) + ' صوت'; }
+  const long = top.ids.length !== 1 || (names[0] && names[0].length > 7);
+  const sorted = ps.slice().sort((a, b) => t[b.id] - t[a.id]);
+  let rows = '';
+  sorted.forEach((p) => {
+    const w = n ? Math.round(t[p.id] / n * 100) : 0;
+    rows += '<div class="br"><span class="n">' + esc(p.name) + '</span><div class="tr"><div class="f" style="width:' + w + '%;background:' + colorOf(ps, p.id).bg + '"></div></div><span class="c">' + ar(t[p.id]) + '</span></div>';
+  });
+  const last = r.q + 1 >= qs.length;
+  const action = isHost()
+    ? '<button type="button" class="btn primary" data-act="next"><span>' + (last ? 'النتيجة النهائية' : 'السؤال اللي بعده') + '</span>' + ICON.next + '</button>'
+    : '<div class="status wait">استنى صاحب القعدة يكمّل</div>';
+  return '<div class="meta"><span>نتيجة سؤال ' + ar(r.q + 1) + ' من ' + ar(qs.length) + '</span></div>' +
+    '<div class="win"><div class="q">الأكتر احتمالاً ' + esc(QUESTIONS[qs[r.q]]) + '</div><div class="name' + (long ? ' long' : '') + '">' + title + '</div>' +
+    (sub ? '<div class="badge">' + ICON.cup + '<span>' + sub + '</span></div>' : '') + '</div>' +
+    '<div class="bars"><div class="label">الأصوات</div>' + rows + '</div><div class="spacer"></div>' + action;
+}
+
+function vEnd(ps) {
+  const t = totals(ps), top = topOf(ps, t), qn = QS().length;
+  const names = top.ids.map((id) => nameOf(ps, id));
+  const sorted = ps.slice().sort((a, b) => t[b.id] - t[a.id]);
+  let rows = '';
+  const vals = sorted.map((p) => t[p.id]), topV = Math.max.apply(null, vals), lowV = Math.min.apply(null, vals);
+  sorted.forEach((p, i) => {
+    rows += rankRow(i, i === 0 && t[p.id] > 0, p.name, ar(t[p.id]) + ' صوت', titleOf(i, sorted.length, t[p.id], topV, lowV));
+  });
+  const head = top.ids.length
+    ? '<div class="win" data-confetti><div class="q">ملك القعدة</div><div class="name long">' + esc(names.join(' و ')) + '</div><div class="badge">' + ICON.cup + '<span>' + ar(top.max) + ' صوت في ' + ar(qn) + ' أسئلة</span></div></div>'
+    : '<div class="win"><div class="q">النتيجة النهائية</div><div class="name long">محدش صوّت</div></div>';
+  const action = isHost()
+    ? '<button type="button" class="btn primary" data-act="again">العب تاني</button>'
+    : '<div class="status wait">استنى صاحب القعدة يبدأ جولة جديدة</div>';
+  return '<div class="bar">' + logo() + '<span class="sp"></span></div>' + head +
+    '<div class="rank"><div class="label">ترتيب القعدة</div>' + rows + '</div><div class="spacer"></div>' + action +
+    (top.ids.length ? shareBtn('شارك النتيجة على واتساب', 'ملك القعدة في لمّة: ' + names.join(' و ') + ' (' + ar(top.max) + ' صوت). جرّب: ' + BASE) : '') +
+    '<button type="button" class="btn ghost" data-act="leave">خروج</button>';
+}
+
+function view() {
+  if (S.screen === 'home') return vHome();
+  if (S.screen === 'join') return vJoin();
+  if (S.screen === 'offSetup') return vOffSetup();
+  if (S.screen === 'quizPlay') return vQuiz();
+  if (S.screen === 'spyPlay') {
+    const p = O.spy.phase;
+    if (p === 'pass') return vSpyPass();
+    if (p === 'reveal') return vSpyReveal();
+    if (p === 'discuss') return vSpyDiscuss();
+    if (p === 'vote') return vSpyVote();
+    if (p === 'guess') return vSpyGuess();
+    return vSpyResult();
+  }
+  if (S.screen === 'offPlay') {
+    if (O.phase === 'pass') return vOffPass();
+    if (O.phase === 'pick') return vOffPick();
+    if (O.phase === 'result') return vOffResult();
+    return vOffEnd();
+  }
+  const r = S.room;
+  if (!r) return vWaitRoom();
+  const ps = PL();
+  if (r.phase === 'lobby') return vLobby(ps);
+  if (r.phase === 'vote') return vVote(ps);
+  if (r.phase === 'result') return vResult(ps);
+  if (r.phase === 'end') return vEnd(ps);
+  return vWaitRoom();
+}
+let lastKey = '';
+function viewKey() { return [S.screen, O.phase, O.spy && O.spy.phase, S.room && (S.room.phase + ':' + S.room.q), O.quiz && (O.quiz.phase + ':' + O.quiz.i), O.q, O.turn].join('|'); }
+function confetti() {
+  const box = document.createElement('div'); box.className = 'conf'; box.setAttribute('aria-hidden', 'true');
+  const cols = ['#FF4F81', '#7A5CFF', '#FFD23F', '#00B8A0', '#F0701F'];
+  for (let i = 0; i < 46; i++) {
+    const p = document.createElement('i');
+    p.style.left = Math.round(Math.random() * 100) + '%';
+    p.style.background = cols[i % cols.length];
+    p.style.setProperty('--dx', Math.round(Math.random() * 120 - 60) + 'px');
+    p.style.setProperty('--rot', Math.round(Math.random() * 900 - 450) + 'deg');
+    p.style.setProperty('--d', (2.2 + Math.random() * 1.6).toFixed(2) + 's');
+    p.style.setProperty('--l', (Math.random() * 0.6).toFixed(2) + 's');
+    box.appendChild(p);
+  }
+  document.body.appendChild(box);
+  setTimeout(() => { if (box.parentNode) box.parentNode.removeChild(box); }, 5200);
+}
+function render() {
+  const k = viewKey(), app = $('app');
+  app.innerHTML = view();
+  if (k !== lastKey) {
+    lastKey = k;
+    app.classList.remove('enter'); void app.offsetWidth; app.classList.add('enter');
+    if (app.querySelector('[data-confetti]')) confetti();
+  }
+}
+
+function toast(msg) {
+  const t = $('toast'); t.textContent = msg; t.hidden = false;
+  clearTimeout(toast.h); toast.h = setTimeout(() => { t.hidden = true; }, 2600);
+}
+
+/* ---------- room lifecycle ---------- */
+function fail(e) {
+  S.busy = false;
+  const c = (e && (e.code || e.message)) || '';
+  S.err = /PERMISSION_DENIED|permission/i.test(c)
+    ? 'مش مسموح بالعملية دي. اتأكد إن قواعد الأمان اتنشرت.'
+    : 'حصلت مشكلة في الاتصال. جرّب تاني.';
+  if (S.screen === 'home' || S.screen === 'join') render(); else toast(S.err);
+}
+function exit(msg) {
+  if (offRoom) { offRoom(); offRoom = null; }
+  S.code = ''; S.room = undefined; S.screen = 'home'; S.err = ''; S.busy = false; S.advKey = '';
+  wakeSet(false);
+  save(); render(); if (msg) toast(msg);
+}
+function enterRoom(code) {
+  if (offRoom) offRoom();
+  S.code = code; S.screen = 'room'; S.busy = false; S.err = ''; S.advKey = ''; S.room = undefined;
+  save(); render();
+  wakeSet(true);
+  offRoom = onValue(ref(db, 'rooms/' + code), (s) => { S.room = s.val(); onRoom(); }, () => { S.room = null; onRoom(); });
+}
+function onRoom() {
+  if (S.screen !== 'room') return;
+  if (S.room === null) { exit('القعدة دي خلصت'); return; }
+  if (S.room && !(S.room.players && S.room.players[S.uid])) { exit('اتشلت من القعدة'); return; }
+  hostTick(); render();
+}
+function hostTick() {
+  const r = S.room;
+  if (!r || r.host !== S.uid || r.phase !== 'vote') return;
+  const key = r.g + '-' + r.q, ps = PL();
+  const all = votedCount(ps, key) >= ps.length, up = now() >= r.qEnd;
+  if ((all || up) && S.advKey !== key) {
+    S.advKey = key;
+    setTimeout(() => {
+      update(ref(db, 'rooms/' + S.code), { phase: 'result' }).catch(() => { S.advKey = ''; });
+    }, all && !up ? 700 : 0);
+  }
+}
+
+async function createRoom() {
+  if (!S.online) { S.err = S.online === null ? 'ثواني، لسه بنتصل...' : 'مفيش اتصال بالنت. جرّب اللعب من موبايل واحد.'; render(); return; }
+  const n = cleanName(S.name);
+  if (!n) { S.err = 'اكتب اسمك الأول'; render(); return; }
+  S.name = n; S.busy = true; S.err = ''; render();
+  try {
+    const oldCode = load().code;
+    if (oldCode) {
+      const os = await get(ref(db, 'rooms/' + oldCode)).catch(() => null);
+      const ov = os && os.val();
+      if (ov && ov.host === S.uid) remove(ref(db, 'rooms/' + oldCode)).catch(() => {});
+    }
+    let made = null;
+    for (let i = 0; i < 10 && !made; i++) {
+      const c = String(1000 + Math.floor(Math.random() * 9000));
+      const s = await get(ref(db, 'rooms/' + c));
+      if (s.exists()) continue;
+      try {
+        await set(ref(db, 'rooms/' + c), {
+          host: S.uid, phase: 'lobby', g: 0, q: 0, qEnd: 0, made: Date.now(),
+          players: { [S.uid]: { name: n, t: Date.now() } }
+        });
+        made = c;
+      } catch (e) { if (i === 9) throw e; }
+    }
+    if (!made) throw new Error('no code');
+    enterRoom(made);
+  } catch (e) { fail(e); }
+}
+
+async function joinRoom() {
+  if (!S.online) { S.err = S.online === null ? 'ثواني، لسه بنتصل...' : 'مفيش اتصال بالنت. جرّب اللعب من موبايل واحد.'; render(); return; }
+  const n = cleanName(S.name);
+  const c = digits(S.codeInput).replace(/\D/g, '');
+  if (c.length !== 4) { S.err = 'الكود لازم يكون ٤ أرقام'; render(); return; }
+  if (!n) { S.err = 'اكتب اسمك الأول'; render(); return; }
+  S.name = n; S.busy = true; S.err = ''; render();
+  try {
+    const s = await get(ref(db, 'rooms/' + c));
+    const v = s.val();
+    if (!v) { S.busy = false; S.err = 'مفيش قعدة بالكود ده'; render(); return; }
+    const mine = v.players && v.players[S.uid];
+    if (!mine) {
+      if (v.phase !== 'lobby') { S.busy = false; S.err = 'القعدة دي بدأت بالفعل'; render(); return; }
+      if (Object.keys(v.players || {}).length >= MAXP) { S.busy = false; S.err = 'القعدة اتملت'; render(); return; }
+    }
+    await set(ref(db, 'rooms/' + c + '/players/' + S.uid), { name: n, t: mine ? (mine.t || Date.now()) : Date.now() });
+    enterRoom(c);
+  } catch (e) { fail(e); }
+}
+
+function leave() {
+  const host = isHost(), code = S.code, uid = S.uid;
+  exit();
+  if (host) remove(ref(db, 'rooms/' + code)).catch(() => {});
+  else remove(ref(db, 'rooms/' + code + '/players/' + uid)).catch(() => {});
+}
+function shuffleIdx(cat) {
+  let idx = QUESTIONS.map((_, i) => i);
+  const grp = QGROUPS.find((x) => x.key === cat);
+  if (grp) idx = idx.filter((i) => i >= grp.from && i < grp.to);
+  for (let i = idx.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const t = idx[i]; idx[i] = idx[j]; idx[j] = t; }
+  return idx;
+}
+function startGame() {
+  if (!isHost() || PL().length < 2) return;
+  const idx = shuffleIdx();
+  S.advKey = '';
+  update(ref(db, 'rooms/' + S.code), { phase: 'vote', q: 0, qs: idx.slice(0, NQ), qEnd: now() + DUR }).catch(fail);
+}
+function nextQ() {
+  const r = S.room; if (!isHost() || !r) return;
+  S.advKey = '';
+  const patch = r.q + 1 < QS().length ? { phase: 'vote', q: r.q + 1, qEnd: now() + DUR } : { phase: 'end' };
+  update(ref(db, 'rooms/' + S.code), patch).catch(fail);
+}
+function again() {
+  const r = S.room; if (!isHost() || !r) return;
+  S.advKey = '';
+  update(ref(db, 'rooms/' + S.code), { phase: 'lobby', g: r.g + 1, q: 0, qEnd: 0, qs: null }).catch(fail);
+}
+function castVote(id) {
+  const r = S.room;
+  if (!r || r.phase !== 'vote') return;
+  set(ref(db, 'rooms/' + S.code + '/votes/' + S.uid + '/' + r.g + '-' + r.q), id).catch(fail);
+}
+function copyCode() {
+  const txt = 'ادخل قعدة لمّة معايا. الكود: ' + ar(S.code) + '\n' + joinLink(S.code);
+  const ok = () => toast('اتنسخ الكود واللينك');
+  const no = () => toast('الكود: ' + ar(S.code));
+  try {
+    if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(txt).then(ok, no); else no();
+  } catch (e) { no(); }
+}
+
+/* ---------- offline: one phone ---------- */
+const O = { names: [], input: '', q: 0, qs: [], turn: 0, phase: 'pass', votes: [], pick: null, game: 'likely', cat: 'all', scores: null, spy: null, quiz: null };
+const offColor = (i) => COLORS[i % COLORS.length];
+function offAv(i, size) {
+  const c = offColor(i), n = O.names[i] || '؟';
+  const st = size ? ';width:' + size + 'px;height:' + size + 'px;font-size:' + Math.round(size / 2) + 'px' : '';
+  return '<span class="av" style="background:' + c.bg + ';color:' + c.fg + st + '">' + esc(Array.from(n)[0] || '؟') + '</span>';
+}
+function offTally(q) {
+  const t = O.names.map(() => 0), v = O.votes[q] || {};
+  Object.keys(v).forEach((k) => { t[v[k]]++; });
+  return t;
+}
+function offTotals() {
+  const t = O.names.map(() => 0);
+  for (let q = 0; q < O.votes.length; q++) offTally(q).forEach((x, i) => { t[i] += x; });
+  return t;
+}
+function offTop(t) {
+  let max = 0; t.forEach((x) => { if (x > max) max = x; });
+  return { max: max, idx: max > 0 ? t.map((x, i) => i).filter((i) => t[i] === max) : [] };
+}
+
+function vOffSetup() {
+  let list = '';
+  O.names.forEach((n, i) => {
+    list += '<div class="pl" style="justify-content:space-between"><span style="display:flex;align-items:center;gap:10px;min-width:0">' + offAv(i) + '<span class="n">' + esc(n) + '</span></span>' +
+      '<button type="button" class="iconbtn" style="width:40px;height:40px;border-radius:12px" data-act="offDel" data-i="' + i + '" aria-label="شيل ' + esc(n) + '">' +
+      '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>';
+  });
+  if (!list) list = '<div class="empty">ضيف أسماء اللاعبين (٢ لـ ٨)</div>';
+  const spyG = O.game === 'spy', quizG = O.game === 'trivia' || O.game === 'proverb';
+  const full = O.names.length >= MAXP, can = O.names.length >= (spyG ? 3 : (quizG ? 1 : 2));
+  const pick = (g, label) => '<button type="button" class="vote' + (O.game === g ? ' sel' : '') + '" style="min-height:52px;flex:1 1 44%" data-act="offGame" data-g="' + g + '" aria-pressed="' + (O.game === g) + '"><span class="n">' + label + '</span></button>';
+  const cats = [{ key: 'all', label: 'الكل' }].concat(QGROUPS);
+  const chips = O.game !== 'likely' ? '' : '<div class="stack"><div class="label">نوع الأسئلة</div><div class="chips" role="group" aria-label="نوع الأسئلة">' +
+    cats.map((c) => '<button type="button" class="loc' + (O.cat === c.key ? ' sel' : '') + '" data-act="offCat" data-c="' + c.key + '" aria-pressed="' + (O.cat === c.key) + '">' + c.label + '</button>').join('') + '</div></div>';
+  return bar('goHome', 'موبايل واحد') +
+    '<div class="hero"><h1>اللعب من موبايل واحد</h1><p class="sub">' + (spyG
+      ? 'واحد فيكم جاسوس مش عارف المكان. اسألوا بعض وكشفوه قبل ما يخمّن.'
+      : quizG ? 'الموبايل بيلف بينكم. كل واحد يجاوب على سؤاله، والأعلى نقاط يكسب.'
+      : 'من غير نت. الموبايل بيتنقل بينكم، وكل واحد يصوّت في السر.') + '</p></div>' +
+    '<div class="row" role="group" aria-label="اللعبة" style="flex-wrap:wrap">' + pick('likely', 'مين الأكتر احتمالاً') + pick('spy', 'الجاسوس') + pick('trivia', 'ثقافة عامة') + pick('proverb', 'كمّل المثل') + '</div>' + chips +
+    '<div id="offAdd" class="row" style="align-items:stretch">' +
+    '<input type="text" id="offname" maxlength="12" placeholder="اسم لاعب" aria-label="اسم اللاعب" enterkeyhint="done" style="flex:1;min-width:0" value="' + esc(O.input) + '"' + (full ? ' disabled' : '') + '>' +
+    '<button type="button" class="btn primary" data-act="offAdd" style="width:auto;flex:none"' + (full ? ' disabled' : '') + '>ضيف</button></div>' +
+    '<div class="stack">' + list + '</div><div class="spacer"></div>' +
+    '<button type="button" class="btn primary" data-act="offStart"' + (can ? '' : ' disabled') + '>ابدأ اللعبة</button>' +
+    (can ? '' : '<p class="note">محتاج ' + (spyG ? 'ثلاث لاعبين' : (quizG ? 'لاعب واحد' : 'لاعبين اتنين')) + ' على الأقل.</p>');
+}
+function vOffPass() {
+  const i = O.turn, prog = Math.round((O.q + i / O.names.length) / O.qs.length * 100);
+  return '<div class="stack"><div class="meta"><span>سؤال ' + ar(O.q + 1) + ' من ' + ar(O.qs.length) + '</span><span>' + ar(i + 1) + ' من ' + ar(O.names.length) + '</span></div>' +
+    '<div class="track"><div class="fill" style="width:' + prog + '%"></div></div></div>' +
+    '<div class="center">' + offAv(i, 84) + '<p class="sub">سلّم الموبايل لـ</p><h1>' + esc(O.names[i]) + '</h1><p class="sub">والباقي يبعدوا عيونهم عن الشاشة.</p></div>' +
+    '<button type="button" class="btn primary" data-act="offShow">أنا ' + esc(O.names[i]) + '، اعرض السؤال</button>';
+}
+function vOffPick() {
+  const i = O.turn;
+  let btns = '';
+  O.names.forEach((n, k) => {
+    const sel = O.pick === k;
+    btns += '<button type="button" class="vote' + (sel ? ' sel' : '') + '" data-act="offSel" data-i="' + k + '" aria-pressed="' + sel + '">' + offAv(k) + '<span class="n">' + esc(n) + (k === i ? ' (أنت)' : '') + '</span></button>';
+  });
+  return '<div class="meta"><span>سؤال ' + ar(O.q + 1) + ' من ' + ar(O.qs.length) + '</span><span>دور ' + esc(O.names[i]) + '</span></div>' +
+    '<div class="qcard"><small>مين الأكتر احتمالاً...</small><div>' + esc(QUESTIONS[O.qs[O.q]]) + '</div></div>' +
+    '<div class="grid">' + btns + '</div><div class="spacer"></div>' +
+    '<button type="button" class="btn primary" data-act="offConfirm"' + (O.pick == null ? ' disabled' : '') + '>ثبّت صوتي</button>';
+}
+function vOffResult() {
+  const t = offTally(O.q), top = offTop(t), n = O.names.length;
+  const names = top.idx.map((k) => O.names[k]);
+  let title, sub = '';
+  if (!top.idx.length) title = 'محدش صوّت';
+  else if (top.idx.length === 1) { title = esc(names[0]); sub = ar(top.max) + ' من ' + ar(n) + ' أصوات'; }
+  else { title = esc(names.join(' و ')); sub = 'تعادل. كل واحد ' + ar(top.max) + ' صوت'; }
+  const long = top.idx.length !== 1 || (names[0] && names[0].length > 7);
+  const order = O.names.map((_, i) => i).sort((a, b) => t[b] - t[a]);
+  let rows = '';
+  order.forEach((k) => {
+    rows += '<div class="br"><span class="n">' + esc(O.names[k]) + '</span><div class="tr"><div class="f" style="width:' + Math.round(t[k] / n * 100) + '%;background:' + offColor(k).bg + '"></div></div><span class="c">' + ar(t[k]) + '</span></div>';
+  });
+  const last = O.q + 1 >= O.qs.length;
+  return '<div class="meta"><span>نتيجة سؤال ' + ar(O.q + 1) + ' من ' + ar(O.qs.length) + '</span></div>' +
+    '<div class="win"><div class="q">الأكتر احتمالاً ' + esc(QUESTIONS[O.qs[O.q]]) + '</div><div class="name' + (long ? ' long' : '') + '">' + title + '</div>' +
+    (sub ? '<div class="badge">' + ICON.cup + '<span>' + sub + '</span></div>' : '') + '</div>' +
+    '<div class="bars"><div class="label">الأصوات</div>' + rows + '</div><div class="spacer"></div>' +
+    '<button type="button" class="btn primary" data-act="offNext"><span>' + (last ? 'النتيجة النهائية' : 'السؤال اللي بعده') + '</span>' + ICON.next + '</button>';
+}
+function vOffEnd() {
+  const t = offTotals(), top = offTop(t);
+  const names = top.idx.map((k) => O.names[k]);
+  const order = O.names.map((_, i) => i).sort((a, b) => t[b] - t[a]);
+  let rows = '';
+  const vals = order.map((k) => t[k]), topV = Math.max.apply(null, vals), lowV = Math.min.apply(null, vals);
+  order.forEach((k, r) => {
+    rows += rankRow(r, r === 0 && t[k] > 0, O.names[k], ar(t[k]) + ' صوت', titleOf(r, order.length, t[k], topV, lowV));
+  });
+  const head = top.idx.length
+    ? '<div class="win" data-confetti><div class="q">ملك القعدة</div><div class="name long">' + esc(names.join(' و ')) + '</div><div class="badge">' + ICON.cup + '<span>' + ar(top.max) + ' صوت في ' + ar(O.qs.length) + ' أسئلة</span></div></div>'
+    : '<div class="win"><div class="q">النتيجة النهائية</div><div class="name long">محدش صوّت</div></div>';
+  return '<div class="bar">' + logo() + '<span class="sp"></span></div>' + head +
+    '<div class="rank"><div class="label">ترتيب القعدة</div>' + rows + '</div><div class="spacer"></div>' +
+    '<button type="button" class="btn primary" data-act="offAgain">العب تاني بنفس اللاعبين</button>' +
+    (top.idx.length ? shareBtn('شارك النتيجة على واتساب', 'ملك القعدة في لمّة: ' + names.join(' و ') + ' (' + ar(top.max) + ' صوت). جرّب: ' + BASE) : '') +
+    '<button type="button" class="btn ghost" data-act="offEdit">غيّر اللاعبين</button>' +
+    '<button type="button" class="btn ghost" data-act="goHome">خروج</button>';
+}
+function offStart() {
+  if (O.game === 'spy') { spyStart(); return; }
+  if (O.game === 'trivia' || O.game === 'proverb') { quizStart(); return; }
+  if (O.names.length < 2) return;
+  O.qs = shuffleIdx(O.cat).slice(0, NQ);
+  O.q = 0; O.turn = 0; O.votes = [{}]; O.pick = null; O.phase = 'pass';
+  wakeSet(true);
+  S.screen = 'offPlay'; render();
+}
+function offConfirm() {
+  if (O.pick == null) return;
+  buzz();
+  O.votes[O.q][O.turn] = O.pick; O.pick = null; O.turn++;
+  O.phase = O.turn >= O.names.length ? 'result' : 'pass';
+  render();
+}
+function offNext() {
+  if (O.q + 1 < O.qs.length) { O.q++; O.turn = 0; O.votes[O.q] = {}; O.phase = 'pass'; }
+  else O.phase = 'end';
+  render();
+}
+function syncFields() {
+  const n = $('name'), c = $('code');
+  if (n) S.name = n.value;
+  if (c) S.codeInput = c.value;
+}
+function offAdd() {
+  const el = $('offname');
+  const n = cleanName(el ? el.value : O.input);
+  if (!n) { toast('اكتب الاسم الأول'); return; }
+  if (O.names.length >= MAXP) { toast('وصلت للحد الأقصى: ٨ لاعبين'); return; }
+  if (O.names.indexOf(n) >= 0) { toast('الاسم ده موجود. ضيف حرف أو رقم.'); return; }
+  O.names.push(n); O.input = ''; O.scores = null; save(); render();
+  const box = $('offname'); if (box) box.focus();
+}
+
+/* ---------- الجاسوس (موبايل واحد) ---------- */
+const LOCS = ['مطعم', 'مدرسة', 'مستشفى', 'مطار', 'شاطئ', 'سينما', 'مول', 'محطة قطار', 'فرح', 'مدينة ملاهي', 'جيم', 'مسجد', 'جامعة', 'سوبر ماركت', 'حديقة الحيوان', 'قهوة', 'مترو الأنفاق', 'سوق الخضار', 'حمام سباحة', 'مكتبة', 'فندق', 'ملعب كورة', 'بنك', 'صالون حلاقة', 'مخبز', 'صيدلية', 'محطة بنزين', 'سنتر دروس', 'كافيه ألعاب', 'حديقة', 'مصنع', 'قسم شرطة', 'مغسلة', 'معرض سيارات', 'مركب في النيل', 'مخيم في الصحراء'];
+const DISC = 6 * 60 * 1000;
+const spyLeft = () => O.spy ? Math.max(0, Math.ceil((O.spy.end - Date.now()) / 1000)) : 0;
+
+function spyStart() {
+  if (O.names.length < 3) return;
+  const n = O.names.length, rnd = (m) => Math.floor(Math.random() * m);
+  O.spy = { loc: rnd(LOCS.length), spyIdx: rnd(n), starter: rnd(n), phase: 'pass', turn: 0, end: 0, pick: null, gpick: null, ctx: '', winner: '', why: '' };
+  if (!O.scores || O.scores.length !== n) O.scores = O.names.map(() => 0);
+  wakeSet(true);
+  S.screen = 'spyPlay'; render();
+}
+function spyHide() {
+  const sp = O.spy;
+  sp.turn++;
+  if (sp.turn >= O.names.length) { sp.phase = 'discuss'; sp.end = Date.now() + DISC; } else sp.phase = 'pass';
+  render();
+}
+function spyTimeUp() {
+  const sp = O.spy;
+  if (!sp || sp.phase !== 'discuss' || Date.now() < sp.end) return;
+  sp.phase = 'vote'; sp.pick = null; buzz([80, 60, 80]);
+  render(); toast('الوقت خلص. صوّتوا على الجاسوس');
+}
+function spyFinish(winner, why) {
+  const sp = O.spy;
+  if (winner === 'spy') O.scores[sp.spyIdx] += 2;
+  else O.names.forEach((_, i) => { if (i !== sp.spyIdx) O.scores[i] += 1; });
+  sp.winner = winner; sp.why = why; sp.phase = 'result'; render();
+}
+function spyAccuse() {
+  const sp = O.spy;
+  if (sp.pick == null) return;
+  if (sp.pick === sp.spyIdx) { sp.ctx = 'caught'; sp.gpick = null; sp.phase = 'guess'; render(); }
+  else spyFinish('spy', 'اتهمتوا ' + O.names[sp.pick] + ' وهو مش الجاسوس.');
+}
+function spyGuessConfirm() {
+  const sp = O.spy;
+  if (sp.gpick == null) return;
+  if (sp.gpick === sp.loc) spyFinish('spy', 'الجاسوس خمّن المكان صح.');
+  else spyFinish('team', (sp.ctx === 'caught' ? 'الجاسوس اتكشف وخمّن غلط' : 'الجاسوس خمّن غلط') + ' (قال ' + LOCS[sp.gpick] + ').');
+}
+
+function vSpyPass() {
+  const sp = O.spy, i = sp.turn, n = O.names.length;
+  return '<div class="stack"><div class="meta"><span>الجاسوس</span><span>' + ar(i + 1) + ' من ' + ar(n) + '</span></div>' +
+    '<div class="track"><div class="fill" style="width:' + Math.round(i / n * 100) + '%"></div></div></div>' +
+    '<div class="center">' + offAv(i, 84) + '<p class="sub">سلّم الموبايل لـ</p><h1>' + esc(O.names[i]) + '</h1><p class="sub">والباقي يبعدوا عيونهم عن الشاشة.</p></div>' +
+    '<button type="button" class="btn primary" data-act="spyShow">أنا ' + esc(O.names[i]) + '، اعرض دوري</button>';
+}
+function vSpyReveal() {
+  const sp = O.spy, i = sp.turn, n = O.names.length, isSpy = i === sp.spyIdx;
+  const card = isSpy
+    ? '<div class="win" style="background:var(--violet);color:#FFFFFF"><div class="q">دورك</div><div class="name long">إنت الجاسوس</div><p style="font-size:16px;font-weight:700;line-height:1.6">مش عارف المكان. اسمع الأسئلة والإجابات وخمّن المكان من غير ما حد يكشفك.</p></div>'
+    : '<div class="win"><div class="q">المكان</div><div class="name long">' + esc(LOCS[sp.loc]) + '</div><p style="font-size:16px;font-weight:700;line-height:1.6">واحد فيكم جاسوس مش عارف المكان ده. ما تقولوش اسم المكان صراحة.</p></div>';
+  return '<div class="meta"><span>دور ' + esc(O.names[i]) + '</span><span>' + ar(i + 1) + ' من ' + ar(n) + '</span></div>' + card +
+    '<div class="spacer"></div><button type="button" class="btn primary" data-act="spyHide">فهمت، اخفي الشاشة</button>';
+}
+function vSpyDiscuss() {
+  const sp = O.spy, left = spyLeft();
+  let chips = '';
+  LOCS.forEach((l) => { chips += '<div class="chipx">' + esc(l) + '</div>'; });
+  return '<div class="stack"><div class="meta"><span>فيه جاسوس بينكم</span><div class="timer">' + ICON.clock + '<span id="stimer">' + clock(left) + '</span></div></div>' +
+    '<div class="track"><div class="fill" id="sbar" style="width:' + Math.round(left / (DISC / 1000) * 100) + '%"></div></div></div>' +
+    '<div class="qcard"><small>يبدأ بالأسئلة: ' + esc(O.names[sp.starter]) + '</small><div>اسألوا بعض أسئلة عن المكان. اللي إجابته غريبة يبقى هو الجاسوس.</div></div>' +
+    '<div class="stack"><div class="label">الأماكن الممكنة</div><div class="locs">' + chips + '</div></div>' +
+    '<div class="spacer"></div>' +
+    '<button type="button" class="btn primary" data-act="spyVote">نصوّت على الجاسوس</button>';
+}
+function vSpyVote() {
+  const sp = O.spy;
+  let btns = '';
+  O.names.forEach((n, k) => {
+    const sel = sp.pick === k;
+    btns += '<button type="button" class="vote' + (sel ? ' sel' : '') + '" data-act="spySel" data-i="' + k + '" aria-pressed="' + sel + '">' + offAv(k) + '<span class="n">' + esc(n) + '</span></button>';
+  });
+  return bar('spyBack', 'التصويت') + '<div class="hero"><h1>مين الجاسوس؟</h1><p class="sub">اتفقوا مع بعض واختاروا واحد.</p></div>' +
+    '<div class="grid">' + btns + '</div><div class="spacer"></div>' +
+    '<button type="button" class="btn primary" data-act="spyAccuse"' + (sp.pick == null ? ' disabled' : '') + '>اتهم</button>' +
+    '<button type="button" class="btn ghost" data-act="spyGuessNow">أنا الجاسوس وعارف المكان</button>';
+}
+function vSpyGuess() {
+  const sp = O.spy;
+  let btns = '';
+  LOCS.forEach((l, k) => {
+    const sel = sp.gpick === k;
+    btns += '<button type="button" class="loc' + (sel ? ' sel' : '') + '" data-act="spyLoc" data-i="' + k + '" aria-pressed="' + sel + '">' + esc(l) + '</button>';
+  });
+  const msg = sp.ctx === 'caught' ? 'الجاسوس اتكشف، لكن عنده فرصة أخيرة: لو خمّن المكان صح يكسب.' : 'لو خمّنت المكان صح تكسب، ولو غلطت الفريق يكسب.';
+  return '<div class="hero"><h1>تخمين الجاسوس</h1><p class="sub">سلّم الموبايل لـ ' + esc(O.names[sp.spyIdx]) + '. ' + msg + '</p></div>' +
+    '<div class="locs">' + btns + '</div><div class="spacer"></div>' +
+    '<button type="button" class="btn primary" data-act="spyGuessConfirm"' + (sp.gpick == null ? ' disabled' : '') + '>ثبّت التخمين</button>';
+}
+function vSpyResult() {
+  const sp = O.spy, spyWon = sp.winner === 'spy';
+  const order = O.names.map((_, i) => i).sort((a, b) => O.scores[b] - O.scores[a]);
+  let rows = '';
+  order.forEach((k, r) => {
+    rows += '<div class="rk' + (r === 0 && O.scores[k] > 0 ? ' first' : '') + '"><span class="pos">' + ar(r + 1) + '</span><span class="n">' + esc(O.names[k]) + '</span><span class="v">' + ar(O.scores[k]) + ' نقطة</span></div>';
+  });
+  return '<div class="win" style="background:' + (spyWon ? 'var(--violet);color:#FFFFFF' : 'var(--orange)') + '"><div class="q">' + (spyWon ? 'الجاسوس كسب' : 'الفريق كسب') + '</div>' +
+    '<div class="name long">' + esc(O.names[sp.spyIdx]) + ' كان الجاسوس</div>' +
+    '<p style="font-size:16px;font-weight:700;line-height:1.6">المكان: ' + esc(LOCS[sp.loc]) + '. ' + esc(sp.why) + '</p></div>' +
+    '<div class="rank"><div class="label">النقاط</div>' + rows + '</div><div class="spacer"></div>' +
+    '<button type="button" class="btn primary" data-act="spyAgain">جولة تانية</button>' +
+    shareBtn('شارك النتيجة على واتساب', (spyWon ? 'الجاسوس كسب' : 'الفريق كسب') + ' في لمّة: ' + O.names[sp.spyIdx] + ' كان الجاسوس والمكان ' + LOCS[sp.loc] + '. العب الجاسوس: ' + BASE) +
+    '<button type="button" class="btn ghost" data-act="offEdit">غيّر اللاعبين أو اللعبة</button>' +
+    '<button type="button" class="btn ghost" data-act="goHome">خروج</button>';
+}
+
+
+/* ---------- ثقافة عامة + كمّل المثل (موبايل واحد) ---------- */
+const TRIVIA = [
+  ['أكبر كوكب في المجموعة الشمسية؟', 'المشتري', ['زحل', 'المريخ', 'الأرض']],
+  ['مين بنى الهرم الأكبر في الجيزة؟', 'خوفو', ['خفرع', 'منكاورع', 'رمسيس']],
+  ['أكبر محيط في العالم؟', 'الهادي', ['الأطلسي', 'الهندي', 'المتجمد الشمالي']],
+  ['كام لاعب بيلعبوا من كل فريق جوه الملعب في كرة القدم؟', '١١', ['٩', '١٠', '١٢']],
+  ['عاصمة اليابان؟', 'طوكيو', ['كيوتو', 'أوساكا', 'سول']],
+  ['أسرع حيوان بري؟', 'الفهد', ['الأسد', 'النمر', 'الحصان']],
+  ['كام كوكب في المجموعة الشمسية؟', '٨', ['٧', '٩', '١٠']],
+  ['مين رسم لوحة الموناليزا؟', 'ليوناردو دا فينشي', ['بيكاسو', 'فان جوخ', 'مايكل أنجلو']],
+  ['كام لون في قوس قزح؟', '٧', ['٥', '٦', '٨']],
+  ['عاصمة السعودية؟', 'الرياض', ['جدة', 'مكة', 'الدمام']],
+  ['أكبر دولة عربية في المساحة؟', 'الجزائر', ['السعودية', 'السودان', 'مصر']],
+  ['أول إنسان مشي على سطح القمر؟', 'نيل أرمسترونج', ['يوري جاجارين', 'باز ألدرين', 'جون جلين']],
+  ['كأس العالم ٢٠٢٢ اتعملت في أنهي دولة؟', 'قطر', ['روسيا', 'البرازيل', 'الإمارات']],
+  ['الحيوان اللي بيسموه سفينة الصحراء؟', 'الجمل', ['الحصان', 'الحمار', 'الغزال']],
+  ['كام ضلع في المسدّس؟', '٦', ['٥', '٧', '٨']],
+  ['أصغر قارة في العالم؟', 'أستراليا', ['أوروبا', 'أنتاركتيكا', 'أمريكا الجنوبية']],
+  ['العضو اللي بيضخ الدم في الجسم؟', 'القلب', ['الكبد', 'الرئة', 'الكلى']],
+  ['كام يوم في فبراير في السنة الكبيسة؟', '٢٩', ['٢٨', '٣٠', '٣١']],
+  ['أعلى جبل في العالم؟', 'إفرست', ['كيليمنجارو', 'مون بلان', 'فوجي']],
+  ['عاصمة فرنسا؟', 'باريس', ['ليون', 'مارسيليا', 'بروكسل']],
+  ['الغاز اللي بنتنفسه ومحتاجينه عشان نعيش؟', 'الأكسجين', ['النيتروجين', 'الهيليوم', 'ثاني أكسيد الكربون']],
+  ['أطول نهر في أفريقيا؟', 'النيل', ['الكونغو', 'النيجر', 'الزمبيزي']]
+];
+const PROVERBS = [
+  ['اللي ياخد أمي يبقى...', 'عمّي'], ['الباب اللي يجيلك منه الريح...', 'سدّه واستريح'],
+  ['جحا أولى...', 'بلحم ثوره'], ['القرد في عين أمه...', 'غزال'],
+  ['العين ما تعلاش على...', 'الحاجب'], ['اللي مالوش كبير...', 'يشتري له كبير'],
+  ['الصبر...', 'مفتاح الفرج'], ['الجار قبل...', 'الدار'], ['الصاحب...', 'ساحب'],
+  ['اللي فات...', 'مات'], ['إن غاب القط...', 'العب يا فار'], ['اطعم الفم...', 'تستحي العين'],
+  ['الطيور على أشكالها...', 'تقع'], ['اللي بيته من زجاج...', 'ما يحدفش الناس بالطوب'],
+  ['العلم في الصغر...', 'كالنقش على الحجر'], ['ضربني وبكى...', 'سبقني واشتكى'],
+  ['اللي إيده في المية...', 'مش زي اللي إيده في النار'], ['الجنيه الأبيض...', 'ينفع في اليوم الأسود']
+];
+function shuf(a) { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); const t = a[i]; a[i] = a[j]; a[j] = t; } return a; }
+function quizItems(kind, n) {
+  const count = Math.min(16, Math.max(8, n * 2));
+  if (kind === 'trivia') {
+    return shuf(TRIVIA).slice(0, count).map((x) => { const o = shuf([x[1]].concat(x[2])); return { q: x[0], opts: o, a: o.indexOf(x[1]) }; });
+  }
+  return shuf(PROVERBS).slice(0, count).map((x) => {
+    const wrong = shuf(PROVERBS.filter((y) => y[1] !== x[1]).map((y) => y[1])).slice(0, 3);
+    const o = shuf([x[1]].concat(wrong)); return { q: x[0], opts: o, a: o.indexOf(x[1]) };
+  });
+}
+function quizStart() {
+  const n = O.names.length; if (n < 1) return;
+  O.quiz = { kind: O.game, items: quizItems(O.game, n), i: 0, scores: O.names.map(() => 0), pick: null, phase: 'pass' };
+  wakeSet(true); S.screen = 'quizPlay'; render();
+}
+const quizWho = () => O.quiz.i % O.names.length;
+function vQuiz() {
+  const z = O.quiz, it = z.items[z.i], who = quizWho(), total = z.items.length;
+  const title = z.kind === 'trivia' ? 'ثقافة عامة' : 'كمّل المثل';
+  if (z.phase === 'end') {
+    const order = O.names.map((_, i) => i).sort((a, b) => z.scores[b] - z.scores[a]);
+    const best = z.scores[order[0]], winners = order.filter((k) => z.scores[k] === best).map((k) => O.names[k]);
+    let rows = '';
+    order.forEach((k, r) => { rows += rankRow(r, r === 0 && z.scores[k] > 0, O.names[k], ar(z.scores[k]) + ' نقطة', ''); });
+    const solo = O.names.length === 1;
+    return '<div class="bar">' + logo() + '<span class="sp"></span></div>' +
+      '<div class="win" data-confetti><div class="q">' + (solo ? 'نتيجتك' : (winners.length > 1 ? 'تعادل' : 'الفايز')) + '</div><div class="name long">' + (solo ? ar(best) + ' من ' + ar(total) : esc(winners.join(' و '))) + '</div>' +
+      '<div class="badge">' + ICON.cup + '<span>' + ar(best) + ' من ' + ar(total) + ' في ' + title + '</span></div></div>' +
+      (solo ? '' : '<div class="rank"><div class="label">الترتيب</div>' + rows + '</div>') + '<div class="spacer"></div>' +
+      '<button type="button" class="btn primary" data-act="quizAgain">العب تاني</button>' +
+      shareBtn('شارك النتيجة على واتساب', (solo ? 'جبت ' + ar(best) + ' من ' + ar(total) : 'الفايز ' + winners.join(' و ')) + ' في ' + title + ' على لمّة. جرّب: ' + BASE) +
+      '<button type="button" class="btn ghost" data-act="offEdit">غيّر اللاعبين أو اللعبة</button>' +
+      '<button type="button" class="btn ghost" data-act="goHome">خروج</button>';
+  }
+  const head = '<div class="stack"><div class="meta"><span>' + title + ' · سؤال ' + ar(z.i + 1) + ' من ' + ar(total) + '</span><span class="pts">' + ICON.cup + ar(z.scores[who]) + '</span></div>' +
+    '<div class="track"><div class="fill" style="width:' + Math.round((z.i + (z.phase === 'reveal' ? 1 : 0)) / total * 100) + '%"></div></div></div>';
+  if (z.phase === 'pass') {
+    return head + '<div class="center">' + offAv(who, 84) + '<p class="sub">' + (O.names.length > 1 ? 'سلّم الموبايل لـ' : 'جاهز؟') + '</p><h1>' + esc(O.names[who]) + '</h1></div>' +
+      '<button type="button" class="btn primary" data-act="quizShow">' + (O.names.length > 1 ? 'أنا ' + esc(O.names[who]) + '، اعرض السؤال' : 'اعرض السؤال') + '</button>';
+  }
+  const ok = z.pick === it.a, shown = z.phase === 'reveal';
+  let opts = '';
+  it.opts.forEach((o, k) => {
+    let c = 'opt';
+    if (shown) c += k === it.a ? ' right' : (k === z.pick ? ' wrong' : ' dim');
+    opts += '<button type="button" class="' + c + '" data-act="quizPick" data-i="' + k + '"' + (shown ? ' disabled' : '') + '><span class="t">' + esc(o) + '</span><span class="k">' + 'أبجد'[k] + '</span></button>';
+  });
+  const foot = shown
+    ? '<div class="status ' + (ok ? 'ok' : 'wait') + '" role="status">' + (ok ? ICON.check + '<span>صح! +١ نقطة</span>' : '<span>غلط. الإجابة الصح متعلّمة بالأخضر</span>') + '</div>' +
+      '<button type="button" class="btn primary" data-act="quizNext"><span>' + (z.i + 1 >= total ? 'النتيجة' : 'اللي بعده') + '</span>' + ICON.next + '</button>'
+    : '<div class="status wait">دورك يا ' + esc(O.names[who]) + '. اختار إجابة</div>';
+  return head + '<div class="qcard big"><small>' + esc(O.names[who]) + '</small><div>' + esc(it.q) + '</div></div><div class="opts">' + opts + '</div><div class="spacer"></div>' + foot;
+}
+function quizPick(k) {
+  const z = O.quiz; if (z.phase !== 'ask') return;
+  z.pick = k; z.phase = 'reveal'; buzz(z.pick === z.items[z.i].a ? 15 : [30, 40, 30]);
+  if (k === z.items[z.i].a) z.scores[quizWho()]++;
+  render();
+}
+function quizNext() {
+  const z = O.quiz;
+  if (z.i + 1 >= z.items.length) z.phase = 'end'; else { z.i++; z.pick = null; z.phase = O.names.length > 1 ? 'pass' : 'ask'; }
+  render();
+}
+
+function netText() {
+  return S.online === null ? 'بنتصل بالإنترنت...' : (S.online ? '' : 'مفيش اتصال بالنت دلوقتي. الأونلاين مش شغال، لكن تقدر تلعب من موبايل واحد.');
+}
+function setNet() { const n = $('net'); if (n) n.textContent = netText(); }
+
+/* ---------- events ---------- */
+document.addEventListener('click', (e) => {
+  const b = e.target.closest('[data-act]');
+  if (!b || b.disabled) return;
+  const a = b.getAttribute('data-act');
+  if (a === 'create') { syncFields(); createRoom(); }
+  else if (a === 'goJoin') { S.err = ''; S.screen = 'join'; wakeSet(false); render(); }
+  else if (a === 'goHome') { S.err = ''; S.screen = 'home'; wakeSet(false); render(); }
+  else if (a === 'leave') leave();
+  else if (a === 'start') startGame();
+  else if (a === 'next') nextQ();
+  else if (a === 'again') again();
+  else if (a === 'copy') copyCode();
+  else if (a === 'vote') { buzz(); castVote(b.getAttribute('data-id')); }
+  else if (a === 'join') { syncFields(); if (!S.busy) joinRoom(); }
+  else if (a === 'offAdd') offAdd();
+  else if (a === 'goOff') { S.err = ''; S.screen = 'offSetup'; wakeSet(false); render(); }
+  else if (a === 'offDel') { O.names.splice(+b.getAttribute('data-i'), 1); O.scores = null; save(); render(); }
+  else if (a === 'offGame') { O.game = b.getAttribute('data-g'); save(); render(); }
+  else if (a === 'offCat') { O.cat = b.getAttribute('data-c'); save(); render(); }
+  else if (a === 'install') installApp();
+  else if (a === 'spyShow') { O.spy.phase = 'reveal'; render(); }
+  else if (a === 'spyHide') spyHide();
+  else if (a === 'spyVote') { O.spy.pick = null; O.spy.phase = 'vote'; render(); }
+  else if (a === 'spyBack') { O.spy.phase = 'discuss'; render(); }
+  else if (a === 'spySel') { O.spy.pick = +b.getAttribute('data-i'); render(); }
+  else if (a === 'spyAccuse') spyAccuse();
+  else if (a === 'spyGuessNow') { O.spy.ctx = 'self'; O.spy.gpick = null; O.spy.phase = 'guess'; render(); }
+  else if (a === 'spyLoc') { O.spy.gpick = +b.getAttribute('data-i'); render(); }
+  else if (a === 'spyGuessConfirm') spyGuessConfirm();
+  else if (a === 'spyAgain') spyStart();
+  else if (a === 'offStart' || a === 'offAgain') offStart();
+  else if (a === 'offShow') { O.phase = 'pick'; O.pick = null; render(); }
+  else if (a === 'offSel') { O.pick = +b.getAttribute('data-i'); render(); }
+  else if (a === 'offConfirm') offConfirm();
+  else if (a === 'offNext') offNext();
+  else if (a === 'quizShow') { O.quiz.phase = 'ask'; render(); }
+  else if (a === 'quizPick') quizPick(+b.getAttribute('data-i'));
+  else if (a === 'quizNext') quizNext();
+  else if (a === 'quizAgain') quizStart();
+  else if (a === 'offEdit') { S.screen = 'offSetup'; render(); }
+});
+/* عشان الكيبورد ما يتقفلش ويحرّك الصفحة قبل ما الضغطة توصل للزرار */
+document.addEventListener('mousedown', (e) => {
+  if (e.target.closest && e.target.closest('[data-act="offAdd"]')) e.preventDefault();
+});
+document.addEventListener('input', (e) => {
+  if (e.target.id === 'name') { S.name = e.target.value; save(); }
+  else if (e.target.id === 'code') S.codeInput = e.target.value;
+  else if (e.target.id === 'offname') O.input = e.target.value;
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key !== 'Enter') return;
+  const id = e.target && e.target.id;
+  if (id === 'offname') { e.preventDefault(); offAdd(); }
+  else if ((id === 'code' || id === 'name') && S.screen === 'join') { e.preventDefault(); syncFields(); if (!S.busy) joinRoom(); }
+});
+setInterval(() => {
+  if (S.screen === 'spyPlay' && O.spy && O.spy.phase === 'discuss') {
+    const l = spyLeft(), t = $('stimer'), f = $('sbar');
+    if (t) t.textContent = clock(l);
+    if (f) f.style.width = Math.round(l / (DISC / 1000) * 100) + '%';
+    spyTimeUp();
+    return;
+  }
+  if (S.screen !== 'room' || !S.room || S.room.phase !== 'vote') return;
+  const skey = S.room.g + '-' + S.room.q;
+  if (!isHost() && now() > S.room.qEnd + 20000 && S.stallKey !== skey) { S.stallKey = skey; render(); return; }
+  const left = secsLeft(), t = $('timer'), f = $('tbar');
+  if (t) t.textContent = clock(left);
+  if (f) f.style.width = Math.round(left / (DUR / 1000) * 100) + '%';
+  hostTick();
+}, 250);
+
+/* ---------- boot ---------- */
+const LINK = (() => { try { const c = new URLSearchParams(location.search).get('room'); return /^\d{4}$/.test(c || '') ? c : ''; } catch (e) { return ''; } })();
+S.name = load().name || '';
+(function () { const st = load(); if (Array.isArray(st.onames)) O.names = st.onames.slice(0, MAXP).map(cleanName).filter(Boolean); if (['spy', 'likely', 'trivia', 'proverb'].indexOf(st.ogame) >= 0) O.game = st.ogame; if (typeof st.ocat === 'string' && (st.ocat === 'all' || QGROUPS.some((g) => g.key === st.ocat))) O.cat = st.ocat; })();
+if (LINK) { S.codeInput = LINK; S.screen = 'join'; }
+render();
+(async () => {
+  try {
+    const st = load();
+    const base = 'https://www.gstatic.com/firebasejs/11.0.2/';
+    const mods = await Promise.race([
+      Promise.all([import(base + 'firebase-app.js'), import(base + 'firebase-auth.js'), import(base + 'firebase-database.js')]),
+      new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), 10000))
+    ]);
+    ({ initializeApp } = mods[0]);
+    ({ getAuth, onAuthStateChanged, signInAnonymously } = mods[1]);
+    ({ getDatabase, ref, get, set, update, remove, onValue } = mods[2]);
+    const app = initializeApp(CFG);
+    auth = getAuth(app); db = getDatabase(app);
+    await new Promise((res) => { const u = onAuthStateChanged(auth, () => { u(); res(); }); });
+    if (!auth.currentUser) await signInAnonymously(auth);
+    S.uid = auth.currentUser.uid;
+    try { onValue(ref(db, '.info/serverTimeOffset'), (s) => { offset = s.val() || 0; }); } catch (e) {}
+    S.online = true; setNet();
+    if (st.code && (!LINK || LINK === st.code)) {
+      const s = await get(ref(db, 'rooms/' + st.code));
+      const v = s.val();
+      if (v && v.host === S.uid && v.made && Date.now() - v.made > 6 * 3600 * 1000) {
+        remove(ref(db, 'rooms/' + st.code)).catch(() => {}); S.code = ''; save();
+      } else if (v && v.players && v.players[S.uid]) { enterRoom(st.code); return; }
+      else { S.code = ''; save(); }
+    }
+    if (LINK && S.screen === 'join' && cleanName(st.name)) { S.name = st.name; S.codeInput = LINK; joinRoom(); }
+  } catch (e) {
+    S.online = false; S.errCode = (e && (e.code || e.message)) || String(e); setNet();
+  }
+})();
+</script>
+</body>
+</html>
