@@ -3,26 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#F2F5FF" media="(prefers-color-scheme: light)">
-<meta name="theme-color" content="#0C0F2B" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#FAFAF8" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#121213" media="(prefers-color-scheme: dark)">
 <meta name="description" content="لمّة: ألعاب قعدة بالعامية تلعبها مع صحابك من الموبايل.">
 <title>لمّة</title>
-<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogItmE2YXZkdipIiwgInNob3J0X25hbWUiOiAi2YTZhdmR2KkiLCAibGFuZyI6ICJhciIsICJkaXIiOiAicnRsIiwgInN0YXJ0X3VybCI6ICIuIiwgInNjb3BlIjogIi4iLCAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwgImJhY2tncm91bmRfY29sb3IiOiAiI0YyRjVGRiIsICJ0aGVtZV9jb2xvciI6ICIjMTQxODNBIiwgImljb25zIjogW3sic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIWnBaWGRDYjNnOUlqQWdNQ0ExTVRJZ05URXlJajQ4Y21WamRDQjNhV1IwYUQwaU5URXlJaUJvWldsbmFIUTlJalV4TWlJZ2NuZzlJakV4TWlJZ1ptbHNiRDBpSXpFME1UZ3pRU0l2UGp4amFYSmpiR1VnWTNnOUlqRTRPQ0lnWTNrOUlqSXlOaUlnY2owaU9USWlJR1pwYkd3OUlpTkdSalJHT0RFaUx6NDhZMmx5WTJ4bElHTjRQU0l6TWpRaUlHTjVQU0l5TWpZaUlISTlJamt5SWlCbWFXeHNQU0lqTjBFMVEwWkdJaUJtYVd4c0xXOXdZV05wZEhrOUlpNDVNaUl2UGp4amFYSmpiR1VnWTNnOUlqSTFOaUlnWTNrOUlqTXpOaUlnY2owaU9USWlJR1pwYkd3OUlpTkdSa1F5TTBZaUlHWnBiR3d0YjNCaFkybDBlVDBpTGprMUlpOCtQQzl6ZG1jKyIsICJzaXplcyI6ICJhbnkiLCAidHlwZSI6ICJpbWFnZS9zdmcreG1sIiwgInB1cnBvc2UiOiAiYW55In1dfQ==">
-<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0iIzE0MTgzQSIvPjxjaXJjbGUgY3g9IjE4OCIgY3k9IjIyNiIgcj0iOTIiIGZpbGw9IiNGRjRGODEiLz48Y2lyY2xlIGN4PSIzMjQiIGN5PSIyMjYiIHI9IjkyIiBmaWxsPSIjN0E1Q0ZGIiBmaWxsLW9wYWNpdHk9Ii45MiIvPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjMzNiIgcj0iOTIiIGZpbGw9IiNGRkQyM0YiIGZpbGwtb3BhY2l0eT0iLjk1Ii8+PC9zdmc+">
+<link rel="manifest" href="data:application/manifest+json;base64,eyJuYW1lIjogItmE2YXZkdipIiwgInNob3J0X25hbWUiOiAi2YTZhdmR2KkiLCAibGFuZyI6ICJhciIsICJkaXIiOiAicnRsIiwgInN0YXJ0X3VybCI6ICIuIiwgInNjb3BlIjogIi4iLCAiZGlzcGxheSI6ICJzdGFuZGFsb25lIiwgImJhY2tncm91bmRfY29sb3IiOiAiI0ZBRkFGOCIsICJ0aGVtZV9jb2xvciI6ICIjMTIxMjEzIiwgImljb25zIjogW3sic3JjIjogImRhdGE6aW1hZ2Uvc3ZnK3htbDtiYXNlNjQsUEhOMlp5QjRiV3h1Y3owaWFIUjBjRG92TDNkM2R5NTNNeTV2Y21jdk1qQXdNQzl6ZG1jaUlIWnBaWGRDYjNnOUlqQWdNQ0ExTVRJZ05URXlJajQ4Y21WamRDQjNhV1IwYUQwaU5URXlJaUJvWldsbmFIUTlJalV4TWlJZ2NuZzlJakV4TWlJZ1ptbHNiRDBpSXpFeU1USXhNeUl2UGp4amFYSmpiR1VnWTNnOUlqSTFOaUlnWTNrOUlqSTFOaUlnY2owaU1UVXdJaUJtYVd4c1BTSnViMjVsSWlCemRISnZhMlU5SWlObVptWWlJSE4wY205clpTMXZjR0ZqYVhSNVBTSXVNaUlnYzNSeWIydGxMWGRwWkhSb1BTSXhNQ0l2UGp4amFYSmpiR1VnWTNnOUlqSTFOaUlnWTNrOUlqRXdOaUlnY2owaU5EWWlJR1pwYkd3OUlpTTJRemxDUkRFaUx6NDhZMmx5WTJ4bElHTjRQU0l6T1RnaUlHTjVQU0l5TURraUlISTlJalEySWlCbWFXeHNQU0lqUkRORk1rWXpJaTgrUEdOcGNtTnNaU0JqZUQwaU16UTBJaUJqZVQwaU16YzJJaUJ5UFNJME5pSWdabWxzYkQwaUl6SkdOVVk1UVNJdlBqeGphWEpqYkdVZ1kzZzlJakUyT0NJZ1kzazlJak0zTmlJZ2NqMGlORFlpSUdacGJHdzlJaU00UlRoRk9USWlMejQ4WTJseVkyeGxJR040UFNJeE1UUWlJR041UFNJeU1Ea2lJSEk5SWpRMklpQm1hV3hzUFNJalJqVkdOVVl6SWk4K1BDOXpkbWMrIiwgInNpemVzIjogImFueSIsICJ0eXBlIjogImltYWdlL3N2Zyt4bWwiLCAicHVycG9zZSI6ICJhbnkifV19">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA1MTIgNTEyIj48cmVjdCB3aWR0aD0iNTEyIiBoZWlnaHQ9IjUxMiIgcng9IjExMiIgZmlsbD0iIzEyMTIxMyIvPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjI1NiIgcj0iMTUwIiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS1vcGFjaXR5PSIuMiIgc3Ryb2tlLXdpZHRoPSIxMCIvPjxjaXJjbGUgY3g9IjI1NiIgY3k9IjEwNiIgcj0iNDYiIGZpbGw9IiM2QzlCRDEiLz48Y2lyY2xlIGN4PSIzOTgiIGN5PSIyMDkiIHI9IjQ2IiBmaWxsPSIjRDNFMkYzIi8+PGNpcmNsZSBjeD0iMzQ0IiBjeT0iMzc2IiByPSI0NiIgZmlsbD0iIzJGNUY5QSIvPjxjaXJjbGUgY3g9IjE2OCIgY3k9IjM3NiIgcj0iNDYiIGZpbGw9IiM4RThFOTIiLz48Y2lyY2xlIGN4PSIxMTQiIGN5PSIyMDkiIHI9IjQ2IiBmaWxsPSIjRjVGNUYzIi8+PC9zdmc+">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cairo:wght@500;700;900&display=swap">
 <style>
-:root{
-  --bg:#F2F5FF; --surface:#FFFFFF; --fg:#14183A; --muted:#545A80;
-  --panel:#14183A; --panel-fg:#F2F5FF; --track:#DCE2F7; --focus:#5B3FFF;
-  --orange:#FF4F81; --violet:#5B3FFF; --yellow:#FFD23F; --ink:#14183A; --err:#C2231C; --teal:#00B8A0; --ok:#0E9F6E;
-  --font:'Cairo','Segoe UI',Tahoma,system-ui,sans-serif; color-scheme:light;
-}
-@media (prefers-color-scheme: dark){
-  :root{
-    --bg:#0C0F2B; --surface:#171C47; --fg:#F2F5FF; --muted:#A9B0DA;
-    --panel:#222862; --panel-fg:#F2F5FF; --track:#2C3370; --focus:#A99BFF; --err:#FF9A85; --ok:#35D399;
-    color-scheme:dark;
-  }
+:root{--bg:#FAFAF8; --surface:#FFFFFF; --fg:#1A1A1B; --muted:#6B6B6E; --panel:#1A1A1B; --panel-fg:#FAFAF8; --track:#E6E6E3; --focus:#2F5F9A; --err:#B5382A; --ok:#2F5F9A; --orange:#6C9BD1; --violet:#2F5F9A; --yellow:#D3E2F3; --teal:#6C9BD1; --ink:#121213; --font:'Cairo','Segoe UI',Tahoma,system-ui,sans-serif; color-scheme:light;}
+@media (prefers-color-scheme: dark){:root{--bg:#121213; --surface:#1E1E20; --fg:#F5F5F3; --muted:#A0A0A4; --panel:#232326; --panel-fg:#F5F5F3; --track:#3A3A3C; --focus:#6C9BD1; --err:#FF9A85; --ok:#6C9BD1; --orange:#6C9BD1; --violet:#4A78B3; --yellow:#A9C6E8; --teal:#6C9BD1; --ink:#121213; color-scheme:dark;}
 }
 *{box-sizing:border-box}
 html,body{height:100%;margin:0}
@@ -140,6 +130,7 @@ body{-webkit-font-smoothing:antialiased}
 @keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
 @keyframes fall{0%{transform:translate3d(0,-12vh,0) rotate(0);opacity:1}100%{transform:translate3d(var(--dx),108vh,0) rotate(var(--rot));opacity:.9}}
 @keyframes shine{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.bigmark{display:flex;justify-content:center}.bigmark .mark{border-radius:30px;animation:bob 3.2s ease-in-out infinite}
 .app.enter>*{animation:rise .42s cubic-bezier(.2,.8,.2,1) both}
 .app.enter>*:nth-child(2){animation-delay:.05s}.app.enter>*:nth-child(3){animation-delay:.1s}.app.enter>*:nth-child(4){animation-delay:.15s}.app.enter>*:nth-child(5){animation-delay:.2s}.app.enter>*:nth-child(n+6){animation-delay:.25s}
 .app.enter .games>.game{animation:rise .45s cubic-bezier(.2,.8,.2,1) both}
@@ -278,12 +269,7 @@ const QGROUPS = [
 ];
 const QUESTIONS = [].concat.apply([], QGROUPS.map((g) => g.qs));
 (function () { let i = 0; QGROUPS.forEach((g) => { g.from = i; i += g.qs.length; g.to = i; }); })();
-const COLORS = [
-  { bg: '#FF4F81', fg: '#14183A' }, { bg: '#5B3FFF', fg: '#FFFFFF' },
-  { bg: '#FFD23F', fg: '#14183A' }, { bg: '#00B8A0', fg: '#06241F' },
-  { bg: '#F0701F', fg: '#1A0E05' }, { bg: '#4C8DF6', fg: '#0F1B33' },
-  { bg: '#7BD35B', fg: '#112409' }, { bg: '#B58CF0', fg: '#14183A' }
-];
+const COLORS = [{ bg: 'var(--orange)', fg: 'var(--ink)' }, { bg: 'var(--violet)', fg: '#FFFFFF' }, { bg: 'var(--yellow)', fg: 'var(--ink)' }, { bg: 'var(--muted)', fg: 'var(--bg)' }, { bg: 'var(--orange)', fg: 'var(--ink)' }, { bg: 'var(--violet)', fg: '#FFFFFF' }, { bg: 'var(--yellow)', fg: 'var(--ink)' }, { bg: 'var(--muted)', fg: 'var(--bg)' }];
 const AR = '٠١٢٣٤٥٦٧٨٩';
 const ICON = {
   plus: '<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>',
@@ -379,7 +365,7 @@ function avatar(ps, p) {
 function secsLeft() { return S.room ? Math.min(DUR / 1000, Math.max(0, Math.ceil((S.room.qEnd - now()) / 1000))) : 0; }
 
 /* ---------- views ---------- */
-const logo = () => '<div class="logo"><svg class="mark" width="40" height="40" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="120" fill="#14183A"/><circle cx="188" cy="226" r="92" fill="#FF4F81"/><circle cx="324" cy="226" r="92" fill="#7A5CFF" fill-opacity=".92"/><circle cx="256" cy="336" r="92" fill="#FFD23F" fill-opacity=".95"/></svg><b>لمّة</b></div>';
+const logo = () => '<div class="logo"><svg class="mark" width="40" height="40" viewBox="0 0 512 512" aria-hidden="true"><rect width="512" height="512" rx="120" fill="#121213"/><circle cx="256" cy="256" r="150" fill="none" stroke="#fff" stroke-opacity=".2" stroke-width="10"/><circle cx="256" cy="106" r="46" fill="#6C9BD1"/><circle cx="398" cy="209" r="46" fill="#D3E2F3"/><circle cx="344" cy="376" r="46" fill="#2F5F9A"/><circle cx="168" cy="376" r="46" fill="#8E8E92"/><circle cx="114" cy="209" r="46" fill="#F5F5F3"/></svg><b>لمّة</b></div>';
 const bar = (act, title) => '<div class="bar"><button type="button" class="iconbtn" data-act="' + act + '" aria-label="رجوع">' + ICON.back + '</button>' + (title ? '<div class="ttl">' + title + '</div>' : logo()) + '<span class="sp"></span></div>';
 const errLine = () => S.err ? '<p class="err" role="alert">' + esc(S.err) + '</p>' : '';
 
@@ -418,11 +404,11 @@ function vHome() {
     (deferredInstall ? '<button type="button" class="btn ghost" data-act="install">ثبّت لمّة على موبايلك</button>' : '') +
     '<p class="note" id="net">' + netText() + '</p></div>' +
     '<div class="games"><div class="label">الألعاب</div>' +
-    '<div class="game"><div class="num" style="background:#FF4F81">١</div><div class="t"><b>مين الأكتر احتمالاً</b><span>٣ دقايق · ٢ لـ ٨ لاعبين</span></div><span class="tag">جاهزة</span></div>' +
-    '<div class="game"><div class="num" style="background:#00B8A0;color:#06241F">٢</div><div class="t"><b>الجاسوس</b><span>٦ دقايق · ٣ لـ ٨ لاعبين · موبايل واحد</span></div><span class="tag">جاهزة</span></div>' +
-    '<div class="game"><div class="num" style="background:#5B3FFF;color:#fff">٣</div><div class="t"><b>ثقافة عامة</b><span>٥ دقايق · لاعب لـ ٨ · موبايل واحد</span></div><span class="tag">جديدة</span></div>' +
-    '<div class="game"><div class="num" style="background:#FFD23F">٤</div><div class="t"><b>كمّل المثل</b><span>٤ دقايق · لاعب لـ ٨ · موبايل واحد</span></div><span class="tag">جديدة</span></div></div>' +
-    '<p class="note">نسخة ٩</p>';
+    '<div class="game"><div class="num" style="background:#6C9BD1">١</div><div class="t"><b>مين الأكتر احتمالاً</b><span>٣ دقايق · ٢ لـ ٨ لاعبين</span></div><span class="tag">جاهزة</span></div>' +
+    '<div class="game"><div class="num" style="background:#6C9BD1;color:#121213">٢</div><div class="t"><b>الجاسوس</b><span>٦ دقايق · ٣ لـ ٨ لاعبين · موبايل واحد</span></div><span class="tag">جاهزة</span></div>' +
+    '<div class="game"><div class="num" style="background:#2F5F9A;color:#fff">٣</div><div class="t"><b>ثقافة عامة</b><span>٥ دقايق · لاعب لـ ٨ · موبايل واحد</span></div><span class="tag">جديدة</span></div>' +
+    '<div class="game"><div class="num" style="background:#D3E2F3">٤</div><div class="t"><b>كمّل المثل</b><span>٤ دقايق · لاعب لـ ٨ · موبايل واحد</span></div><span class="tag">جديدة</span></div></div>' +
+    '<p class="note">نسخة ١٠</p>';
 }
 function vJoin() {
   return bar('goHome', '') +
@@ -449,7 +435,7 @@ function vLobby(ps) {
     '<div class="codecard"><div><small>كود القعدة</small><strong>' + ar(S.code) + '</strong></div><button type="button" class="copy" data-act="copy">' + ICON.copy + '<span>انسخ</span></button></div>' +
     shareBtn('ابعت الدعوة على واتساب', 'تعالى العب معايا لمّة. الكود: ' + S.code + '\n' + joinLink(S.code)) +
     '<div class="stack"><div class="row"><div class="label">اللاعبين</div><div class="cnt">' + ar(ps.length) + ' من ' + ar(MAXP) + '</div></div><div class="grid">' + slots + '</div></div>' +
-    '<div class="game"><div class="num" style="background:#FF4F81">١</div><div class="t"><b>مين الأكتر احتمالاً</b><span>' + ar(NQ) + ' أسئلة · ' + ar(DUR / 1000) + ' ثانية لكل سؤال</span></div></div>' +
+    '<div class="game"><div class="num" style="background:#6C9BD1">١</div><div class="t"><b>مين الأكتر احتمالاً</b><span>' + ar(NQ) + ' أسئلة · ' + ar(DUR / 1000) + ' ثانية لكل سؤال</span></div></div>' +
     '<div class="spacer"></div>' + action;
 }
 
@@ -524,6 +510,7 @@ function vEnd(ps) {
 function view() {
   if (S.screen === 'home') return vHome();
   if (S.screen === 'join') return vJoin();
+  if (S.screen === 'login') return vLogin();
   if (S.screen === 'offSetup') return vOffSetup();
   if (S.screen === 'quizPlay') return vQuiz();
   if (S.screen === 'spyPlay') {
@@ -554,7 +541,7 @@ let lastKey = '';
 function viewKey() { return [S.screen, O.phase, O.spy && O.spy.phase, S.room && (S.room.phase + ':' + S.room.q), O.quiz && (O.quiz.phase + ':' + O.quiz.i), O.q, O.turn].join('|'); }
 function confetti() {
   const box = document.createElement('div'); box.className = 'conf'; box.setAttribute('aria-hidden', 'true');
-  const cols = ['#FF4F81', '#7A5CFF', '#FFD23F', '#00B8A0', '#F0701F'];
+  const cols = ['#6C9BD1', '#2F5F9A', '#D3E2F3', '#6C9BD1', '#F0701F'];
   for (let i = 0; i < 46; i++) {
     const p = document.createElement('i');
     p.style.left = Math.round(Math.random() * 100) + '%';
@@ -1076,6 +1063,24 @@ function quizNext() {
   render();
 }
 
+
+/* ---------- شاشة الدخول: الاسم بس، بيتحفظ على الموبايل ---------- */
+function vLogin() {
+  return '<div class="center" style="gap:18px">' +
+    '<div class="bigmark">' + logo().replace(/^<div class="logo">(<svg.*?<\/svg>).*$/, '$1').replace('width="40" height="40"', 'width="112" height="112"') + '</div>' +
+    '<h1 style="font-size:36px">أهلاً بيك في لمّة</h1>' +
+    '<p class="sub">اكتب اسمك وادخل. من غير باسورد ولا رقم تليفون.</p></div>' +
+    '<div class="stack"><div class="field"><label for="lname">اسمك إيه؟</label>' +
+    '<input type="text" id="lname" maxlength="12" autocomplete="off" enterkeyhint="go" placeholder="اكتب اسمك" value="' + esc(S.name) + '">' + errLine() + '</div>' +
+    '<button type="button" class="btn primary" data-act="login">يلا ندخل</button>' +
+    '<p class="note">الاسم بيتحفظ على موبايلك بس، وبيظهر للي بتلعب معاهم.</p></div>';
+}
+function doLogin() {
+  const el = $('lname'), n = cleanName(el ? el.value : S.name);
+  if (!n) { S.err = 'اكتب اسمك الأول'; render(); const b = $('lname'); if (b) b.focus(); return; }
+  S.name = n; S.err = ''; S.screen = LINK ? 'join' : 'home'; save(); render();
+}
+
 function netText() {
   return S.online === null ? 'بنتصل بالإنترنت...' : (S.online ? '' : 'مفيش اتصال بالنت دلوقتي. الأونلاين مش شغال، لكن تقدر تلعب من موبايل واحد.');
 }
@@ -1117,6 +1122,7 @@ document.addEventListener('click', (e) => {
   else if (a === 'offSel') { O.pick = +b.getAttribute('data-i'); render(); }
   else if (a === 'offConfirm') offConfirm();
   else if (a === 'offNext') offNext();
+  else if (a === 'login') doLogin();
   else if (a === 'quizShow') { O.quiz.phase = 'ask'; render(); }
   else if (a === 'quizPick') quizPick(+b.getAttribute('data-i'));
   else if (a === 'quizNext') quizNext();
@@ -1129,13 +1135,15 @@ document.addEventListener('mousedown', (e) => {
 });
 document.addEventListener('input', (e) => {
   if (e.target.id === 'name') { S.name = e.target.value; save(); }
+  else if (e.target.id === 'lname') S.name = e.target.value;
   else if (e.target.id === 'code') S.codeInput = e.target.value;
   else if (e.target.id === 'offname') O.input = e.target.value;
 });
 document.addEventListener('keydown', (e) => {
   if (e.key !== 'Enter') return;
   const id = e.target && e.target.id;
-  if (id === 'offname') { e.preventDefault(); offAdd(); }
+  if (id === 'lname') { e.preventDefault(); doLogin(); }
+  else if (id === 'offname') { e.preventDefault(); offAdd(); }
   else if ((id === 'code' || id === 'name') && S.screen === 'join') { e.preventDefault(); syncFields(); if (!S.busy) joinRoom(); }
 });
 setInterval(() => {
@@ -1160,6 +1168,7 @@ const LINK = (() => { try { const c = new URLSearchParams(location.search).get('
 S.name = load().name || '';
 (function () { const st = load(); if (Array.isArray(st.onames)) O.names = st.onames.slice(0, MAXP).map(cleanName).filter(Boolean); if (['spy', 'likely', 'trivia', 'proverb'].indexOf(st.ogame) >= 0) O.game = st.ogame; if (typeof st.ocat === 'string' && (st.ocat === 'all' || QGROUPS.some((g) => g.key === st.ocat))) O.cat = st.ocat; })();
 if (LINK) { S.codeInput = LINK; S.screen = 'join'; }
+else if (!cleanName(S.name)) S.screen = 'login';
 render();
 (async () => {
   try {
